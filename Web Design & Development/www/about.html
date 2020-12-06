@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!--this page following index layout same have 2 nav one for default one for
+ small devices, then i change the nav location. i provided news part and apply
+ flexbox for help design using div for each element as box. finally i provided two
+ nav system again one for default one for small devices-->
+
+<body>
+<!-- [4] .Normalize css file from :
+    URL:https://necolas.github.io/normalize.css/
+    Data accessed: 2020-4-16
+
+    [1]. Text content downloaded from: Lipsum.com
+     URL: https://www.lipsum.com
+     Date accessed: 2020-3-19
+-->
+<div class="imgsrc" > Lorem ipsum</div>
+
+<nav class="primaryNav" id="secondnav"><!--navgation list for default -->
+    <ul>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="info.html">ACADEMICS</a></li>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#assignments">ASSIGNMENTS</a></li>
+        <li><a href="#Contact">CONTACT</a></li>
+    </ul>
+</nav>
+
+<div class="smallnav"><!--navgation list for small devices contain span for text-->
+    <span>Navigation Bar </span>
+    <div class="displaynav">
+        <ul>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="info.html">ACADEMICS</a></li>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="#assignments">ASSIGNMENTS</a></li>
+            <li><a href="#Contact">CONTACT</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="aboutdetails">
+
+
+
+    <article class="news"><!--news part for getting rencently news-->
+        <h2>News</h2><br>
+        <p>Nulla cursus commodo massa eget pharetra. <br /><br />Nulla cursus commodo massa eget pharetra. Nullam scelerisque lectus eget <br /><br />.</p>
+    </article>
+
+    <article id="aboutus"> <!--part for describe our company -->
+
+        <h2>About us</h2>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget velit dolor. Nam at blandit tellus, et bibendum lacus. Fusce mattis eleifend lectus non semper.</p>
+        <p>Nulla cursus commodo massa eget pharetra. Nullam scelerisque lectus eget scelerisque facilisis. Vivamus interdum turpis nec gravida mattis. Nulla pulvinar diam sit amet arcu vestibulum facilisis.</p>
+        <p>Nam ut erat turpis. Sed risus libero, euismod faucibus sem eu, viverra dapibus elit. In ut diam quis libero ultrices mollis. Etiam vel mi id felis rutrum pellentesque vitae at turpis.</p>
+
+        <img src="img/uspeople.jpg" width="450" alt="people">
+
+        <!--[1].uspeople for about us part:
+            URL:https://foter.com/photo3/black-and-white-image-of-people-sitting-in-conference-room/
+            Data accessed:2020-4-19 -->
+    </article>
+
+
+    <article id="ourteam"><!--part for describe our company -->
+
+        <h2>Our Team</h2>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget velit dolor. Nam at blandit tellus, et bibendum lacus. Fusce mattis eleifend lectus non semper.</p>
+        <p>Nulla cursus commodo massa eget pharetra. Nullam scelerisque lectus eget scelerisque facilisis. Vivamus interdum turpis nec gravida mattis. Nulla pulvinar diam sit amet arcu vestibulum facilisis.</p>
+        <p>Nam ut erat turpis. Sed risus libero, euismod faucibus sem eu, viverra dapibus elit. In ut diam quis libero ultrices mollis. Etiam vel mi id felis rutrum pellentesque vitae at turpis.</p>
+        <img src="img/notebook.jpg" width="450" alt="book">
+        <!-- [2].notebook for our team part:
+            URL:https://foter.com/photo3/notebook-and-ballpoint-with-laptop-in-background/
+            Data accessed:2020-4-19 -->
+    </article>
+
+
+    <footer><!--two footer system one for default one for small devices -->
+
+        <img src="img/logo.png" alt="logo">
+
+
+        <form class ="login">
+            <input type="text" placeholder="UserName" >
+            <br><br>
+            <input type="text" placeholder="Password" >
+        </form>
+
+        <p class="copyright">&copy; 2020.Lorem ipsum </p>
+        <div id="searching">
+            <div class="search bar">
+                <form>
+                    <input id="searchingbox" type="text" placeholder="Searching" >
+                </form>
+            </div>
+
+
+        </div>
+
+
+        <div class="footerNav">
+            <ul>
+                <li><a href="">Privacy</a></li>
+                <li><a href="">Terms of Use</a></li>
+                <li><a href="">Employment</a></li>
+                <li><a href="">Questions Chat</a></li>
+            </ul>
+        </div>
+
+
+
+    </footer>
+</div>
+</body>
+</html>

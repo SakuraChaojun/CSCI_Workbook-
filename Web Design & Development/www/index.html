@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Learning Anywhere</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<!-- this web-page include four main part background, nav text area
+    and footer. i have provided two format nav for responsive using
+    small and default. moreover background i using 2 pic same to reduce
+    broswer white edge. next main area include h4 and text footer include
+    quick nav and logo and searching box login system.-->
+
+<body>
+<!-- [4] .Normalize css file from :
+    URL:https://necolas.github.io/normalize.css/
+    Data accessed: 2020-4-16
+
+    [1]. Text content downloaded from: Lipsum.com
+     URL: https://www.lipsum.com
+     Date accessed: 2020-3-19
+-->
+<nav class="primaryNav"> <!--navgation list for default -->
+    <ul>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="info.html">ACADEMICS</a></li>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#assignments">ASSIGNMENTS</a></li>
+        <li><a href="#Contact">CONTACT</a></li>
+    </ul>
+</nav>
+
+<div class="smallnav"><!--navgation list for small devices contain span for text-->
+    <span>Navigation Bar </span>
+    <div class="displaynav">
+    <ul>
+    <li><a href="about.html">ABOUT</a></li>
+    <li><a href="info.html">ACADEMICS</a></li>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="#assignments">ASSIGNMENTS</a></li>
+    <li><a href="#Contact">CONTACT</a></li>
+    </ul>
+    </div>
+</div>
+
+<div id="content"><!--main header for next step -->
+<header>
+    <h1 id="mainhaead">Next Step</h1>
+
+</header>
+<!--
+	[1].bakcground pic for main background
+    URL:https://cdn.magdeleine.co/wp-content/uploads/2015/05/3765c625.jpeg
+    Data accessed: 2020-4-19
+	-->
+
+    <img class="background" id="background2" src="img/background.jpeg" alt="background">
+    <img class="background" src="img/background.jpeg" alt="background">
+    <div class="smallscreen" >Learning Anywhere</div> <!--whole page as background tow pic reduce white edge  -->
+    <main>
+            <section id="aboutCourse"> <!--textarea -->
+                <h3>ABOUT THIS COURSE</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet sodales justo. Sed sollicitudin, mauris non rhoncus cursus, enim eros consequat arcu, ac dictum dolor turpis quis turpis. Morbi lobortis, lacus egestas interdum consectetur, eros dui maximus nibh, ac sollicitudin nunc nibh eu arcu. Mauris tincidunt iaculis odio, eget gravida nulla dignissim a. Etiam varius felis id maximus mattis. In quis condimentum lectus, quis placerat erat. Vivamus et consectetur odio, ac finibus tellus.</p>
+                <br>
+                <p>Suspendisse scelerisque est elementum, vulputate leo quis, congue dolor. Integer id tempus dui. Nunc rutrum tincidunt sem vitae faucibus. Maecenas vel diam quis purus tincidunt luctus. Aliquam erat volutpat. Mauris viverra magna felis, porta consequat urna sodales eget. Nam venenatis vestibulum sem, et pretium sapien. Donec consequat mauris ac justo condimentum sagittis. Quisque in mollis risus. Nam ligula tellus, tincidunt sed purus non, bibendum facilisis lacus. Suspendisse in magna mollis, vehicula lectus ac, consectetur massa. In quis ligula venenatis, ullamcorper erat vel, luctus sem. Praesent maximus odio et tristique eleifend. Praesent nulla est, aliquet eget ante ut, scelerisque suscipit justo. Etiam eget sodales ex, in ullamcorper dolor.</p>
+            </section>
+
+    </main>
+
+
+
+<footer> <!--two footer system one for default one for small devices -->
+
+    <img src="img/logo.png" alt="logo">
+
+
+    <form class ="login">
+        <input type="text" placeholder="UserName" >
+        <br><br>
+        <input type="text" placeholder="Password" >
+    </form>
+
+
+
+    <p class="copyright">&copy; 2020.Lorem ipsum </p>
+    <div id="searching">
+        <div class="search bar">
+            <form>
+                <input id="searchingbox" type="text" placeholder="Searching" >
+            </form>
+        </div>
+
+
+    </div>
+
+
+    <div class="footerNav">
+        <ul>
+        <li><a href="">Privacy</a></li>
+        <li><a href="">Terms of Use</a></li>
+        <li><a href="">Employment</a></li>
+        <li><a href="">Live Chat</a></li>
+        </ul>
+    </div>
+
+
+
+</footer>
+</div>
+
+
+</body>
+</html>

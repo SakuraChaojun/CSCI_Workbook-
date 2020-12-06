@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Academics</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<!-- same layout like index page one two nav system. then background, news part.
+it is remarkable that i provided two system about course,one for default one for
+small devices. for small devices, i have apply hover function help disappear and
+display the course details. additioally, i using flexbox help design. after that
+i using button in the page. two footer system applied
+
+-->
+<body>
+
+<!-- [4] .Normalize css file from :
+    URL:https://necolas.github.io/normalize.css/
+    Data accessed: 2020-4-16
+
+    [1]. Text content downloaded from: Lipsum.com
+     URL: https://www.lipsum.com
+     Date accessed: 2020-3-19
+-->
+<div class="imgsrcinfo" > Lorem ipsum</div>
+
+<nav class="primaryNav" id="secondnav"><!--navgation list for default -->
+    <ul>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="info.html">ACADEMICS</a></li>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#assignments">ASSIGNMENTS</a></li>
+        <li><a href="#Contact">CONTACT</a></li>
+    </ul>
+</nav>
+
+<div class="smallnav"><!--navgation list for small devices contain span for text-->
+    <span>Navigation Bar </span>
+    <div class="displaynav">
+        <ul>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="info.html">ACADEMICS</a></li>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="#assignments">ASSIGNMENTS</a></li>
+            <li><a href="#Contact">CONTACT</a></li>
+        </ul>
+    </div>
+</div>
+
+
+
+<article class="news"><!--news part for getting rencently news-->
+    <h2>News</h2><br>
+    <p>Nulla cursus commodo massa eget pharetra. <br /><br />Nulla cursus commodo massa eget pharetra. Nullam scelerisque lectus eget <br /><br />.</p>
+</article>
+
+<div id="coursede"><!--describe each course using div combine pic default version -->
+
+    <div class="box">
+    <img class="coursepic" src="img/webcourse.jpg" width="356" alt="webcourse">
+        <!--[1].webcourse for course details:
+                URL:https://foter.com/photo3/man-working-on-laptop-with-coffee-mug-in-background/
+                Data accessed: 2020-4-19-->
+
+    <div class="word">
+
+    <p>Nulla cursus commodo massa eget pharetra</p>
+    <p>Nulla cursus commodo massa eget pharetra</p>
+    <p>Nulla cursus commodo massa eget pharetra</p>
+    </div>
+
+    </div>
+
+
+    <div class="box">
+     <img class="coursepic" src="img/chemistry.jpg" width="356" alt="chemristry">
+<!-- [2].chemistry for course details:
+        URL:https://foter.com/photo3/lab-research-chemistry-test-experiment-many-1/
+        Data accessed: 2020-4-19-->
+
+        <div class="word">
+        <p>Nulla cursus commodo massa eget pharetra</p>
+        <p>Nulla cursus commodo massa eget pharetra</p>
+        <p>Nulla cursus commodo massa eget pharetra</p>
+        </div>
+
+    </div>
+
+    <div class="box">
+        <img class="coursepic" src="img/biology.jpg" width="356" alt="biology">
+<!--[3].biology for course details:
+        URL:https://foter.com/photo3/student-biology-notes-think-study-faculty/
+        Data accessed: 2020-4-19-->
+
+        <div class="word">
+        <p>Nulla cursus commodo massa eget pharetra</p>
+        <p>Nulla cursus commodo massa eget pharetra</p>
+        <p>Nulla cursus commodo massa eget pharetra</p>
+        </div>
+
+    </div>
+</div>
+
+
+<div id="smallcoursede"><!--describe each course using div combine pic small device version -->
+
+    <div class="box">
+        <img class="coursepic" src="img/webcourse.jpg" width="356" alt="webcourse">
+        <!--https://foter.com/photo3/man-working-on-laptop-with-coffee-mug-in-background/-->
+
+        <div class="word">
+            <button>Register Now</button>
+            <p>Nulla cursus commodo massa eget pharetra</p>
+            <p>Nulla cursus commodo massa eget pharetra</p>
+            <p>Nulla cursus commodo massa eget pharetra</p>
+        </div>
+
+    </div>
+
+
+    <div class="box">
+        <img class="coursepic" src="img/chemistry.jpg" width="356" alt="chemristry">
+        <!-- https://foter.com/photo3/lab-research-chemistry-test-experiment-many-1/-->
+
+        <div class="word">
+            <button>Register Now</button>
+            <p>Nulla cursus commodo massa eget pharetra</p>
+            <p>Nulla cursus commodo massa eget pharetra</p>
+            <p>Nulla cursus commodo massa eget pharetra</p>
+        </div>
+
+    </div>
+
+    <div class="box">
+        <img class="coursepic" src="img/biology.jpg" width="356" alt="biology">
+        <!--https://foter.com/photo3/student-biology-notes-think-study-faculty/-->
+
+        <div class="word">
+            <button>Register Now</button>
+            <p>Nulla cursus commodo massa eget pharetra</p>
+            <p>Nulla cursus commodo massa eget pharetra</p>
+            <p>Nulla cursus commodo massa eget pharetra</p>
+        </div>
+
+    </div>
+</div>
+
+    <div id="register"> <!--button for register the course  -->
+        <button id="button1">Register Now</button>
+        <button id="button2">Register Now</button>
+        <button id="button3">Register Now</button>
+    </div>
+
+
+
+<section id="infoCourse"> <!--describe the course   -->
+    <h3>ABOUT THIS COURSE</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet sodales justo. Sed sollicitudin, mauris non rhoncus cursus, enim eros consequat arcu, ac dictum dolor turpis quis turpis. Morbi lobortis, lacus egestas interdum consectetur, eros dui maximus nibh, ac sollicitudin nunc nibh eu arcu. Mauris tincidunt iaculis odio, eget gravida nulla dignissim a. Etiam varius felis id maximus mattis. In quis condimentum lectus, quis placerat erat. Vivamus et consectetur odio, ac finibus tellus.</p>
+    <br>
+    <p>Suspendisse scelerisque est elementum, vulputate leo quis, congue dolor. Integer id tempus dui. Nunc rutrum tincidunt sem vitae faucibus. Maecenas vel diam quis purus tincidunt luctus. Aliquam erat volutpat. Mauris viverra magna felis, porta consequat urna sodales eget. Nam venenatis vestibulum sem, et pretium sapien. Donec consequat mauris ac justo condimentum sagittis. Quisque in mollis risus. Nam ligula tellus, tincidunt sed purus non, bibendum facilisis lacus. Suspendisse in magna mollis, vehicula lectus ac, consectetur massa. In quis ligula venenatis, ullamcorper erat vel, luctus sem. Praesent maximus odio et tristique eleifend. Praesent nulla est, aliquet eget ante ut, scelerisque suscipit justo. Etiam eget sodales ex, in ullamcorper dolor.</p>
+</section>
+
+
+<footer><!--two footer system one for default one for small devices -->
+
+    <img src="img/logo.png" alt="logo">
+
+
+    <form class ="login">
+        <input type="text" placeholder="UserName" >
+        <br><br>
+        <input type="text" placeholder="Password" >
+    </form>
+
+    <p class="copyright">&copy; 2020.Lorem ipsum </p>
+    <div id="searching">
+        <div class="search bar">
+            <form>
+                <input id="searchingbox" type="text" placeholder="Searching" >
+            </form>
+        </div>
+
+
+    </div>
+
+
+    <div class="footerNav">
+        <ul>
+            <li><a href="">Privacy</a></li>
+            <li><a href="">Terms of Use</a></li>
+            <li><a href="">Employment</a></li>
+            <li><a href="">Questions Chat</a></li>
+        </ul>
+    </div>
+
+
+
+</footer>
+</body>
+</html>

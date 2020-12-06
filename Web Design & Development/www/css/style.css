@@ -1,0 +1,1236 @@
+/*
+<!--
+HTML IMG sources:
+
+HTML and CSS part:
+
+[1]. Text content downloaded from: Lipsum.com
+     URL: https://www.lipsum.com
+     Date accessed: 2020-3-19
+
+[2].Primary Nav function References from
+     https://www.cnblogs.com/coco1s/p/6402723.htmlrefences
+     Data accessed: 2020-4-19
+
+[3].Some Web layout method or syntax references from CSCI1170 Lecture notes
+    https://dal.brightspace.com/d2l/le/content/110322/viewContent/1615602/View
+    Data accessed: 2020-4-18
+
+[4] .Normalize css file from :
+    URL:https://necolas.github.io/normalize.css/
+    Data accessed: 2020-4-16
+
+[5]hover picter disppear and show learned from:
+    URL: https://andy6804tw.github.io/2017/12/22/css-image/
+    Data accessed: 2020-4-19
+
+[6]dropdown nav bar learned form
+    URL:https://www.runoob.com/css/css-dropdowns.html
+    Data accessed: 2020-4-19
+
+---------------
+HTML IMG sources:
+
+background:
+[1].bakcground pic for main background
+    URL:https://cdn.magdeleine.co/wp-content/uploads/2015/05/3765c625.jpeg
+    Data accessed: 2020-4-19
+
+[2].book background pic for academic background
+    URL:https://foter.com/photo3/aerial-view-of-laptoop-books-mobile-phone-and-books-on-wooden-table/
+    Data accessed: 2020-4-19
+
+About page:
+[1].uspeople for about us part:
+    URL:https://foter.com/photo3/black-and-white-image-of-people-sitting-in-conference-room/
+    Data accessed:2020-4-19
+
+[2].notebook for our team part:
+    URL:https://foter.com/photo3/notebook-and-ballpoint-with-laptop-in-background/
+    Data accessed:2020-4-19
+
+Acadmics page:
+
+[1].webcourse for course details:
+    URL:https://foter.com/photo3/man-working-on-laptop-with-coffee-mug-in-background/
+    Data accessed: 2020-4-19
+
+[2].chemistry for course details:
+    URL:https://foter.com/photo3/lab-research-chemistry-test-experiment-many-1/
+    Data accessed: 2020-4-19
+
+[3].biology for course details:
+    URL:https://foter.com/photo3/student-biology-notes-think-study-faculty/
+    Data accessed: 2020-4-19
+ -->
+ */
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    height: 100%;
+}
+
+.background{
+    position:fixed;
+    top: 0;
+    left: 0;
+
+    width:100%;
+    height:100%;
+
+    z-index:-1;
+
+    background-color: #fff;
+    background-repeat: no-repeat;
+
+    background-position: center 0;
+    overflow: hidden;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    transform: scale(1.02);
+
+}
+
+.smallscreen{
+    display: none;
+}
+
+.smallnav{
+    display: none;
+}
+#background2{filter: blur(0px);}
+
+.primaryNav{
+    height:100px;
+    top:0;
+    position: sticky;
+    width: 100%;
+    z-index: 999;
+    background:rgba(0,0,0,0.0);
+}
+
+
+
+.primaryNav > ul{
+    list-style-type: none;
+    text-indent: -35px;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.primaryNav > ul > li{
+    display: inline;
+    float:left;
+    padding-right: 10%;
+    padding-top: 3%;
+    position: relative;
+    left:20%;
+}
+
+.primaryNav ul li a:link,
+.primaryNav ul li a:visited{
+    font-family: Arial,Helvetica,sans-serif;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+}
+
+.primaryNav ul li a:hover{
+    color:#BF2604;
+}
+
+
+#content{
+    color: white;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+
+
+#mainhaead{
+    padding-left: 2vh;
+    width:40%;
+    font-size: 6em;
+    background: rgba(74,104,112,0.3) ;
+    color: #F2911B;
+}
+
+#aboutCourse{
+    text-align: justify;
+    margin: 10vh;
+    position: relative;
+    top:-15vh;
+}
+
+#aboutCourse >h3{
+    color:#730C02 ;
+    margin-bottom: 3vh;
+}
+
+
+
+
+/*
+page2
+ */
+
+.imgsrc{
+
+
+    background-image: url("../img/background.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover ;
+    height: 40vh;
+    background-attachment: fixed;
+    position: relative;
+    z-index:1;
+
+    padding-top: 100px;
+    color:white;
+    font-size: 100px;
+    text-align: center;
+    font-family: fantasy,Georgia,serif;
+}
+
+#secondnav{
+    background:rgba(0,0,0,0.9);
+}
+
+
+#aboutdetails{
+    background-color: #F6F4F2;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+
+}
+.news {
+    background-color: #EFEFEF;
+    font-size: 1em;
+    text-align: center;
+    margin:30px;
+    padding: 10px;
+}
+
+#aboutus{
+    margin: 20px;
+    text-align: justify;
+}
+
+
+#aboutus > img{
+    position: relative;
+    left: 53%;
+    top:-290px;
+    height: 270px;
+}
+#aboutus >h2{
+    margin-bottom: 20px;
+    margin-left: 2.5%;
+    font-size: xx-large;
+}
+#aboutus >p{
+    padding: 10px;
+    margin: 20px;
+    width: 500px;
+    word-break: normal;
+    text-align: justify;
+
+}
+
+
+#ourteam{
+    margin: -100px 20px 20px 20px;
+    text-align: justify;
+}
+
+
+#ourteam > img{
+    position: relative;
+    left: 53%;
+    top:-290px;
+    height: 270px;
+}
+#ourteam >h2{
+    margin-bottom: 20px;
+    margin-left: 2.5%;
+    font-size: xx-large;
+}
+#ourteam >p{
+    padding: 10px;
+    margin: 20px;
+    width: 500px;
+    word-break: normal;
+    text-align: justify;
+
+}
+
+
+
+/*
+page 3
+ */
+
+#coursede{
+    margin-top: 20px;
+    display: flex;
+    padding: 30px;
+
+
+}
+
+.coursepic{
+    display: block;
+    width: 100%;
+}
+
+.box{
+    position: relative;
+    width: 100%;
+    margin: 10px;
+
+}
+.word{
+    opacity: 99%;
+    position: absolute;
+    top:0;
+
+    text-align: center;
+    box-sizing: border-box;
+    /*
+    learned from https://andy6804tw.github.io/2017/12/22/css-image/
+     */
+
+    background-color: rgba(0,0,0,.5);
+
+    width:100%;
+    height: 100%;
+
+
+}
+
+#tabletRegster{
+    display:none;
+}
+
+.word p{
+    color: white;
+    position:relative;
+    top:40%;
+
+}
+
+#register{
+    display: flex;
+    margin: -3px 80px 40px 40px;
+    justify-content: space-around;
+    color: #730C02;
+}
+
+
+.imgsrcinfo{
+    /*
+    [9] .Background image for <main> used from:
+      URL: https://foter.com/photo3/aerial-view-of-laptoop-books-mobile-phone-and-books-on-wooden-table/
+      Date accessed: 19 Mar 2020
+     */
+
+    background-image: url("../img/book.jpg");
+    background-repeat: no-repeat;
+    background-size: cover ;
+    height: 40vh;
+    background-attachment: fixed;
+    position: relative;
+    z-index:1;
+
+    padding-top: 100px;
+    color:black;
+    font-size: 100px;
+    text-align: center;
+    font-family: fantasy,Georgia,serif;
+}
+
+
+
+#infoCourse{
+    margin: 120px 30px 100px;
+    padding: 30px;
+    background-color: #EFEFEF;
+    text-align: justify;
+}
+
+#infoCourse >h3{
+    margin-bottom: 20px;
+    color: #F2911B;
+    font-size: x-large;
+}
+
+#smallcoursede{
+    display: none;
+}
+
+
+/*
+footer
+ */
+footer {
+    width: 98.5%;
+    height: 150px;
+    background-color: black;
+    overflow: hidden;
+    display: flex;
+    padding: 10px;
+
+}
+
+
+footer > p{
+
+    position: relative;
+    left: 440px;
+    bottom: -130px;
+    color: #F2911B;
+
+}
+
+footer > img{
+    order: 2;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+
+    top:25px;
+    width: fit-content;
+    flex-grow: 1.5;
+
+
+}
+
+
+#searching{
+    order: 2;
+    position: relative;
+    left:-363px;
+    top:30px;
+
+}
+
+.login{
+    position: relative;
+    top:30px;
+    margin: 20px;
+    display: block;
+
+
+}
+#searchingbox{
+    width: 280px;
+}
+
+
+.footerNav{
+    order: 3;
+    position: relative;
+    left: -90px;
+    overflow: hidden;
+
+}
+
+
+.footerNav > ul{
+    list-style-type: none;
+    text-align: center;
+
+
+}
+.footerNav > ul > li{
+    display: block;
+    position: relative;
+    padding: 10px;
+
+}
+
+
+.footerNav a:link,
+.footerNav a:visited{
+    font-family: Arial,Helvetica,sans-serif;
+    text-decoration: none;
+    font-size: 12px;
+    color: white;
+
+}
+
+
+.footerNav a:hover{
+    color: yellow;
+}
+
+
+
+/*
+tablet
+ */
+@media (min-width: 601px) and (max-width: 979px){
+   /*primarynav
+
+    */
+
+
+    .background{
+        display: none;
+    }
+
+    .smallnav{
+        display: none;
+    }
+    .smallscreen{
+        /*
+        [0] .Background image for <main> used from:
+          URL: https://cdn.magdeleine.co/wp-content/uploads/2015/05/3765c625.jpeg
+          Date accessed: 19 Mar 2020
+         */
+        display: inline;
+        background-image: url("../img/background.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover ;
+        height: 40vh;
+        background-attachment: fixed;
+        position: relative;
+        z-index:1;
+
+        padding-top: 100px;
+        color:white;
+        font-size: 100px;
+        text-align: center;
+        font-family: fantasy,Georgia,serif;
+    }
+
+    .primaryNav{
+        height:100px;
+        top:0;
+        position: sticky;
+        width: 100%;
+        z-index: 999;
+        background:black;
+    }
+
+
+
+    .primaryNav > ul{
+        list-style-type: none;
+        text-indent: -35px;
+        position: relative;
+        overflow: hidden;
+
+    }
+
+    .primaryNav > ul > li{
+        display: inline;
+        float:left;
+        padding-right: 8%;
+        padding-top: 5%;
+        position: relative;
+        left:17%;
+    }
+
+    .primaryNav ul li a:link,
+    .primaryNav ul li a:visited{
+        font-family: Arial,Helvetica,sans-serif;
+        text-decoration: none;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: white;
+    }
+
+    .primaryNav ul li a:hover{
+        color:#BF2604;
+    }
+
+    #content{
+        color: white;
+        display:flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+    }
+
+
+    #mainhaead{
+        display: none;
+    }
+
+    #aboutCourse{
+        text-align: justify;
+        margin: 10vh;
+        position: relative;
+        top:1em;
+        background-color: #F6F4F2;
+        color: black;
+    }
+
+    #aboutCourse >h3{
+        color:#730C02 ;
+        margin-bottom: 3vh;
+    }
+
+
+    /*
+page2
+ */
+
+    .imgsrc{
+        /*
+        [0] .Background image for <main> used from:
+          URL: https://cdn.magdeleine.co/wp-content/uploads/2015/05/3765c625.jpeg
+          Date accessed: 19 Mar 2020
+         */
+
+        background-image: url("../img/background.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover ;
+        height: 40vh;
+        background-attachment: fixed;
+        position: relative;
+        z-index:1;
+
+        padding-top: 100px;
+        color:white;
+        font-size: 100px;
+        text-align: center;
+        font-family: fantasy,Georgia,serif;
+    }
+
+    #secondnav{
+        background:rgba(0,0,0,0.9);
+    }
+
+
+
+
+    #aboutdetails{
+        background-color: #F6F4F2;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+
+    }
+    .news {
+        background-color: #EFEFEF;
+        font-size: 1em;
+        text-align: center;
+        margin:30px;
+        padding: 10px;
+    }
+
+    #aboutus{
+        margin: 30px;
+        text-align: justify;
+
+    }
+
+
+    #aboutus > img{
+        position: relative;
+        left: 68%;
+        top:-290px;
+
+        width:auto;
+        height: auto;
+        max-width: 30%;
+        max-height: 30%;
+
+
+
+    }
+    #aboutus >h2{
+        margin-bottom: 20px;
+        margin-left: 45%;
+        font-size: xx-large;
+    }
+    #aboutus >p{
+        padding: 10px;
+        margin: 20px;
+        width: 500px;
+        word-break: normal;
+        text-align: justify;
+
+    }
+
+
+    #ourteam{
+        margin: -100px 30px 30px 30px;
+        text-align: justify;
+        background: #EFEFEF;
+    }
+
+
+    #ourteam > img{
+        position: relative;
+        left: 68%;
+        top:-290px;
+        width:auto;
+        height: auto;
+        max-width: 30%;
+        max-height: 30%;
+
+
+
+    }
+    #ourteam >h2{
+        margin-bottom: 20px;
+        margin-left: 45%;
+        font-size: xx-large;
+    }
+    #ourteam >p{
+        padding: 10px;
+        margin: 20px;
+        width: 500px;
+        word-break: normal;
+        text-align: justify;
+
+    }
+
+
+    /*
+    page3
+     */
+
+    #coursede{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        padding: 60px;
+
+
+    }
+
+    .coursepic{
+        display: block;
+        width: 100%;
+    }
+
+    .box{
+        position: relative;
+        width: 100%;
+        margin: 10px;
+
+    }
+    .word{
+        opacity: 99%;
+        position: absolute;
+        top:0;
+
+        text-align: center;
+        box-sizing: border-box;
+        /*
+        https://andy6804tw.github.io/2017/12/22/css-image/
+         */
+
+        background-color: rgba(0,0,0,.5);
+
+        width:100%;
+        height: 100%;
+
+
+    }
+
+    .word p{
+        color: white;
+        position:relative;
+        top:40%;
+
+    }
+
+    #button1{ visibility: hidden;}
+    #button3{ visibility: hidden;}
+
+
+    .imgsrcinfo{
+        /*
+         .Background image for <main> used from:
+          URL: https://foter.com/photo3/aerial-view-of-laptoop-books-mobile-phone-and-books-on-wooden-table/
+          Date accessed: 19 Mar 2020
+         */
+
+        background-image: url("../img/book.jpg");
+        background-repeat: no-repeat;
+        background-size: cover ;
+
+        background-attachment: fixed;
+        position: relative;
+        z-index:1;
+
+        padding-top: 100px;
+        color:black;
+        font-size: 100px;
+        text-align: center;
+        font-family: fantasy,Georgia,serif;
+    }
+
+
+
+    #infoCourse{
+        margin: 100px 50px 100px ;
+        padding: 40px;
+        background-color: #EFEFEF;
+        text-align: justify;
+    }
+
+    #infoCourse >h3{
+        margin-bottom: 20px;
+        color: #F2911B;
+        font-size: x-large;
+    }
+
+    #smallcoursede{
+        display: none;
+    }
+
+    /*
+footer tablet
+ */
+    footer {
+        width: 98.5%;
+        height: 90px;
+        background-color: black;
+        overflow: hidden;
+    }
+
+    footer > p{
+
+        position: relative;
+        left: 440px;
+        bottom: -130px;
+        color: #F2911B;
+
+    }
+
+    footer > img{
+        display: none;
+    }
+
+    #searching{
+      display: none;
+
+    }
+
+    .login{
+        position: relative;
+        top:5px;
+        margin: 20px;
+        display: inline;
+    }
+
+    .footerNav{
+        position: relative;
+        bottom: -2.5em;
+        overflow: hidden;
+        display: inline;
+        left:10%
+    }
+
+    .footerNav > ul{
+        list-style-type: none;
+        text-align: center;
+        width: 300px;
+        display: inline;
+
+    }
+    .footerNav > ul > li{
+        display: inline;
+        position: relative;
+        padding: 10px;
+
+    }
+
+    .footerNav a:link,
+    .footerNav a:visited{
+        font-family: Arial,Helvetica,sans-serif;
+        text-decoration: none;
+        font-size: 12px;
+        color: white;
+    }
+
+    .footerNav a:hover{
+        color: yellow;
+    }
+
+}
+
+
+
+@media screen and (max-width :600px) {
+
+    .background {
+        display: none;
+    }
+
+    .smallnav {
+        display: inline;
+    }
+
+    .displaynav {
+        display: none;
+    }
+
+    .primaryNav {
+        display: none;
+    }
+
+    .smallscreen {
+        /*
+         .Background image for <main> used from:
+          URL: https://cdn.magdeleine.co/wp-content/uploads/2015/05/3765c625.jpeg
+          Date accessed: 19 Mar 2020
+         */
+        display: inline;
+        background-image: url("../img/background.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 40vh;
+        background-attachment: fixed;
+        position: relative;
+        z-index: 1;
+
+        padding-top: 100px;
+        color: white;
+        font-size: 100px;
+        text-align: center;
+        font-family: fantasy, Georgia, serif;
+    }
+
+
+    .smallnav {
+        height: 100px;
+
+
+        position: relative;
+        width: 100%;
+        z-index: 999;
+        color: white;
+        background: black;
+    }
+
+
+    .smallnav > ul {
+        list-style-type: none;
+        text-indent: -35px;
+        position: relative;
+        overflow: hidden;
+
+    }
+
+    .smallnav > ul > li {
+        display: inline;
+
+        padding-right: 8%;
+        padding-top: 5%;
+        position: relative;
+        left: 17%;
+    }
+
+    .smallnav ul li a:link,
+    .smallnav li a:visited {
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: grey;
+    }
+
+    .smallnav ul li a:hover {
+        color: #BF2604;
+    }
+
+    .smallnav:hover .displaynav {
+        display: inline;
+    }
+
+    #content {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+    }
+
+
+    #mainhaead {
+        display: none;
+    }
+
+    #aboutCourse {
+        text-align: justify;
+        margin: 10vh;
+        position: relative;
+        top: 1em;
+        background-color: #F6F4F2;
+        color: black;
+    }
+
+    #aboutCourse > h3 {
+        color: #730C02;
+        margin-bottom: 3vh;
+    }
+
+    /*
+page2
+*/
+    .imgsrc {
+        /*
+         .Background image for <main> used from:
+          URL: https://cdn.magdeleine.co/wp-content/uploads/2015/05/3765c625.jpeg
+          Date accessed: 19 Mar 2020
+         */
+
+        background-image: url("../img/background.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 40vh;
+        background-attachment: fixed;
+        position: relative;
+        z-index: 1;
+
+        padding-top: 100px;
+        color: white;
+        font-size: 100px;
+        text-align: center;
+        font-family: fantasy, Georgia, serif;
+    }
+
+    #secondnav {
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+
+    #aboutdetails {
+        background-color: #F6F4F2;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .news {
+        background-color: #EFEFEF;
+        font-size: 1em;
+        text-align: center;
+        margin: 30px;
+        padding: 10px;
+    }
+
+    #aboutus {
+        margin: 30px 30px 60px;
+        text-align: justify;
+
+    }
+
+    #aboutus > img {
+        position: relative;
+        left: 30%;
+        top: 10px;
+
+        width: auto;
+        height: auto;
+        max-width: 50%;
+        max-height: 50%;
+
+
+    }
+
+    #aboutus > h2 {
+        margin-bottom: 20px;
+        margin-left: 45%;
+        font-size: xx-large;
+    }
+
+    #aboutus > p {
+        padding: 10px;
+        margin: 10px;
+
+    }
+
+
+    #ourteam {
+        margin: 70px 30px 30px 30px;
+        text-align: justify;
+        background: #EFEFEF;
+    }
+
+
+    #ourteam > img {
+        position: relative;
+        left: 30%;
+        top: 10px;
+
+        width: auto;
+        height: auto;
+        max-width: 50%;
+        max-height: 50%;
+
+    }
+
+    #ourteam > h2 {
+        margin-bottom: 20px;
+        margin-left: 45%;
+        font-size: xx-large;
+    }
+
+    #ourteam > p {
+        padding: 10px;
+        margin: 10px;
+    }
+
+
+    /*
+    page3
+     */
+    #coursede {
+        display: none;
+    }
+
+    #smallcoursede{
+        display: inline;
+    }
+    .coursepic {
+        display: block;
+        width: 100%;
+    }
+
+    .box {
+        position: relative;
+        width: 100%;
+        margin: 10px;
+
+    }
+
+    .word {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+
+        text-align: center;
+        box-sizing: border-box;
+        /*
+        https://andy6804tw.github.io/2017/12/22/css-image/
+         */
+
+        background-color: rgba(0, 0, 0, .3);
+        width: 100%;
+        height: 100%;
+    }
+
+    .word:hover{
+        opacity: 1;
+        transition: 300ms;
+    }
+
+    #tabletRegster {
+        display: none;
+    }
+
+    .word p {
+        color: white;
+        position: relative;
+        top: 40%;
+
+    }
+
+    #register {
+        display: none;
+        margin: -3px 80px 40px 40px;
+        justify-content: space-around;
+        color: #730C02;
+    }
+
+
+    .imgsrcinfo {
+        /*
+        .Background image for <main> used from:
+          URL: https://foter.com/photo3/aerial-view-of-laptoop-books-mobile-phone-and-books-on-wooden-table/
+          Date accessed: 19 Mar 2020
+         */
+
+        background-image: url("../img/book.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 40vh;
+        background-attachment: fixed;
+        position: relative;
+        z-index: 1;
+
+        padding-top: 100px;
+        color: black;
+        font-size: 100px;
+        text-align: center;
+        font-family: fantasy, Georgia, serif;
+    }
+
+
+    #infoCourse {
+        margin: 120px 30px 100px;
+        padding: 30px;
+        background-color: #EFEFEF;
+        text-align: justify;
+    }
+
+    #infoCourse > h3 {
+        margin-bottom: 20px;
+        color: #F2911B;
+        font-size: x-large;
+    }
+
+    footer {
+        width: 98.5%;
+        height: 90px;
+        background-color: black;
+        overflow: hidden;
+
+    }
+
+    footer > p{
+        position: relative;
+        left: 440px;
+        bottom: -130px;
+        color: #F2911B;
+
+    }
+
+    footer > img{
+        display: inline;
+        position: relative;
+        left: -50px;
+        top:5px;
+        max-height: 90%;
+        max-width: 90%;
+    }
+
+
+    #searching{
+        display: none;
+    }
+
+    .login{
+        position: relative;
+        top:5px;
+        margin: 20px;
+        display: inline;
+
+    }
+
+    .footerNav {
+        display: none;
+    }
+
+}
+

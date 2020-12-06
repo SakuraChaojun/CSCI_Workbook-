@@ -1,0 +1,327 @@
+---
+title: "STAT 3340 Assignment 5, Fall 2019 - due ???, at beginning of class"
+author: "Chaojun Ma"
+date: 'Banner:  B00726514'
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+1. Data was collected on the degree to which oceanic phytoplankton is inhibited by exposure to ultraviolet
+radiation.  The following shows a plot of inhibition ($y$) vs uv concentration ($x1$), with separate
+regession lines for  surface and deep samples.
+
+```{r}
+ data=read.csv("http://bsmith.mathstat.dal.ca/stat3340/Data/ozone.csv")
+ y=as.double(data[,1])
+ x1=as.double(data[,2])
+ x2=as.character(data[,3])
+ surface=data.frame(data[x2=="S",])
+ deep=data.frame(data[x2=="D",])
+ plot(x1,y,xlab="UV concentration",ylab="percentage growth rate",pch=x2)
+ abline(lm(y~x1,data=surface),col="blue")
+ abline(lm(y~x1,data=deep),col="red")
+ legend(0.00,45,legend=c("surface","deep"),col=c("blue","red"),lty=c(1,1))
+ 
+```
+Define $Z$ as the indicator that $x2$ equals "S".
+
+```{r}
+Z=ifelse(x2=="S",1,0)
+```
+   
+   + 1a) Carry out a multiple regression which allows for different intercepts
+and slopes for the surface and deep measurements.  That is:
+```{r}
+f1=lm(y~x1+Z+x1:Z,data=data)
+anova(f1)
+
+```
+
+
+$$y = \beta_0 + \beta_1 x_1 + \beta_2 Z + \beta_3 x_1 Z + \epsilon$$.
+
+Fit the model using the lm command and print the anova output.
+
+   + 1b) Carry out a multiple regression which allows for different slopes 
+but requires the same intercept for the surface and deep measurements.
+
+```{r}
+f2=lm(y~x1+x1:Z,data=data)
+anova(f2)
+
+```
+
+
+$$y = \beta_0 + \beta_1 x_1 + \beta_3 x_1 Z + \epsilon$$.
+
+(Note that when $Z=0$ the slope is $\beta_1$ and when $Z=1$ the
+slope is $\beta_1+\beta_3$, but in either case the intercept is $\beta_0$).
+
+Fit using lm and print the anova output.
+
+   + 1 c) Test the hypothesis of equal intercepts.
+
+The test compares the two models above.  The full model allows
+for different intercepts and different slopes for Surface and Deep,
+while the reduced model requires the same intercept $\beta_0$ in
+both cases, but different slopes.
+
+   + 1 c(i)
+   
+  State the hypotheses in terms of the model parameters.
+  
+```{r}
+#H0:beta2=0 Ha:beta2 not equal to zero 
+
+```
+  
+   + 1 c(ii)
+   
+  What is the observed value of the test statistic.  Show your calculation
+of the F statistic using the error sums of squares for the two models you fit.
+```{r}
+# appropriate commands here
+Fobs=((1015.4-1014.31)/1)/78.02
+Fobs
+```
+   + 1c(iii)
+  What are the degrees of freedom of the F statistic.
+  
+```{r}
+#answer: df1=1 df2=13
+```
+  
+   + 1c(iv)
+   
+  Calculate the p-value using the ``pf'' command in R.
+
+```{r}
+result= 1-pf(Fobs,1,13)
+result
+```
+
+\newpage
+
+
+2. 
+The table below shows the yield of crops given different blends
+of fertilizer.
+\begin{table}[h]
+\center
+\begin{tabular}{r|rrrr}
+Fertilizer&Wheat&Corn&Soy&Rice\\
+\hline
+X&123&128&166&151\\
+&156&150&178&125\\
+&112&174&187&117\\
+&100&116&153&155\\
+&168&109&195&158\\
+\hline
+FS&135&175&140&167\\
+&130&132&145&183\\
+&176&120&159&142\\
+&120&187&131&167\\
+&155&184&126&168\\
+\hline
+SS&156&186&185&175\\
+&180&138&206&173\\
+&147&178&188&154\\
+&146&176&165&191\\
+&193&190&188&169\\
+\end{tabular}
+\end{table}
+
+The data can be entered into R as:
+
+```{r}
+yield=c(123,128,166,151,156,150,178,125,112,174,187,117,100,116,153,155,
+168,109,195,158,135,175,140,167,130,132,145,183,176,120,159,142,120,187,
+131,167,155,184,126,168,156,186,185,175,180,138,206,173,147,178,188,154,
+146,176,165,191,193,190,188,169)
+
+crop=as.factor(rep(c("W","C","S","R"),15))  
+fertilizer=as.factor(c(rep("X",20),rep("FS",20),rep("SS",20)))
+```
+
+
+  + 2a)
+   Make separate boxplots of yield versus crop, and yield versus fertilizer.
+For example, "boxplot(yield $\sim$ crop)".
+```{r}
+boxplot(yield~crop, main="Yield and Crop relations");
+boxplot(yield~fertilizer,main="Yield and Fertilizer relations")
+
+```
+
+Comment on the relationships between yield and crop, and yield and fertilizer.
+```{r}
+
+#answer:respect above figure: 
+#answer:There exist four categories for crop: C, R, S, W 
+#Yield & crop C:average crop is between 160 to 180,maximum is about 190 ,minimum is about 110
+#Yield & crop R:average crop is between 160 to 180,maximum is about 190 ,minimum is about 120
+#Yield & crop S:average crop is between 160 to 180,maximum is about 210 ,minimum is about 130
+#Yield & crop W:average crop is between 140 to 160,maximum is about 190 ,minimum is about 100
+#C,R,S average is between 150 and 170, 
+
+
+#answer:There are three categories for fertilizer: FS, SS, X
+#Yield and fertilizer FS:average value is between 140 to 160,maximum is about 190 ,minimum is about 130 
+#Yield and fertilizer SS:average value is between 160 to 180,maximum is more than 200,minimum is less than 140
+#Yield and fertilizer X:average value is between 140 to 160,maximum is more than 180 minimum is lessthan  100 
+#FS,SS,X average is between 150 and 180, 
+
+```
+
+
+   + 2b)
+Define indicator variables for the crop types W, C, and S, and for fertilizer types X and FS. For example, IW=ifelse(crop=="W",1,0)
+```{r}
+cw=ifelse(crop=="W",1,0);
+cs=ifelse(crop=="S",1,0);
+cc=ifelse(crop=="C",1,0);
+
+fx=ifelse(fertilizer=="X",1,0);
+ffx=ifelse(fertilizer=="FS",1,0);
+
+```
+
+
+   + 2c) Write down a linear model using the indicator variables for crop
+and fertilizer which allows for an interaction between crop and fertilizer.  (Hint: your model
+should have two main effect terms for fertilizer, three main effect terms for crop type, and
+6 interaction terms.)
+```{r}
+#answer: beta0+beta1*x1+beta2*x2+beta3*x3+beta4*z1+beta5*z2+beta6*x1z1+beta7*x1z2+beta8*x2z1+beta9*x2z2+beta10*x3z1+b #answer: eta11*x3z2
+#note x1=cw,x2=cs,x3=cc,z1=fx,z2=ffx
+
+model=lm(yield~cw+cs+cc+fx+ffx+cw:fx+cw:ffx+cs:fx+cs:ffx+cc:fx+cc:ffx);
+
+```
+
+   + 2d) Fit the multiple regression model using the lm command, and show the anova output.
+```{r}
+model=lm(yield~cw+cs+cc+fx+ffx+cw:fx+cw:ffx+cs:fx+cs:ffx+cc:fx+cc:ffx);
+anova(model);
+```
+
+   + 2e)
+   Assess whether some fertilizers work better with certain crops.
+That is assess the null hypothesis that there is NO interaction
+between fertilizer and crop.
+
+   + 2e(i) State the hypotheses.
+```{r}
+#answer: H0:beta6=beta7=beta8=beta9=beta10=beta11=0  Ha: at least one of them(from beta6 to beta 11) not equal to #answer: zero 
+```
+   
+   + 2e(ii) Write down the reduced model under the null hypothesis.
+```{r}
+#answer:yield= beta0+beta1*x1+beta2*x2+beta3*x3+beta4*z1+beta5*z2
+#answer: note x1=cw,x2=cs,x3=cc,z1=fx,z2=ffx
+```
+   
+   + 2e(iii) Fit the reduced model using the lm command, and show the anova output.
+```{r}
+reducedmodel=lm(yield~cw+cs+cc+fx+ffx);
+anova(reducedmodel);
+```
+   
+   + 2e(iv)Calculate the F test statistic using the error sums of squares from the two anova outputs.
+```{r}
+Fvalue=((27446.3-21220.4)/6)/442.1
+Fvalue
+```
+
+   + 2e(v) Calculate the p-value using the pf command in R.
+```{r}
+presult=1-pf(Fvalue,6,48)
+presult;
+```
+
+\newpage
+
+3.  The following is a plot of nitrous oxide vs average distance from major employment centers, in Boston.  Note that the data is
+part of the MASS library, which you need to have loaded to do this
+question.
+
+CARRY OUT ALL HYPOTHESIS TESTING FOR THIS PROBLEM AT $\alpha=.01$.
+
+
+
+```{r}
+library(MASS)
+attach(Boston)
+plot(dis,nox,xlab="distance",ylab="NOx")
+```
+
+Following is the summary output after fitting a 10'th order
+polynomial model.
+
+```{r}
+lm10=lm(nox~dis+I(dis^2)+I(dis^3)+I(dis^4)+I(dis^5)
+    +I(dis^6)+I(dis^7)+I(dis^8)+I(dis^9)+I(dis^10),data=Boston)
+summary(lm10)
+```
+
+   + 3a)  Based on the summary output, which is the least significant term in the regression?  Is it statstically significant at level .01?
+```{r}
+#answer: beta10 is least significant; 
+#answer: accoring to the result yes is statstically significant at level .01
+```
+   
+   + 3b)  Fit a 9'th order polynomial model, and use the anova
+   command to compare the 9'th and 10'th order models with an
+   F test (ie anova(lm9,lm10), where lm9 is suitably defined.
+   Report the value of the F statistics and  the p-value? Can 
+   the model be reduce from 10'th order to 9'th order?   (ie is the p-value < .01?)
+```{r}
+lm9=lm(nox~dis+I(dis^2)+I(dis^3)+I(dis^4)+I(dis^5)
+    +I(dis^6)+I(dis^7)+I(dis^8)+I(dis^9),data=Boston)
+
+anova(lm9,lm10)
+#answer:since the F value is 0.5759, regred above result 0.579 is bigger than p-value (.01).  can be reduce 
+
+```
+   
+   + 3c)  carry out a series of hypothesis tests for a backward
+   selection procedure.  That is, now compare 9'th order to 8'th order, 8'th order to 7'th order, ...  Proceed until you carry out a test which IS significant (ie has p-value <.01).  What is the order of the polynomial model you've selected using this stepwise testing
+   procedure. (NOTE, you can do all of this testing by looking
+   at "anova(lm10)")
+```{r}
+step=step(lm10,direction = "backward")
+#answer: according to the result, should choose 8th model cause the AIC value is smallest 
+
+```
+   
+   + 3d)  Fit all polynomial models from 1st order through 10'th order.  For each model report the $R^2$ and $adjusted$ $R^2$ values.  Which model maximizes $R^2$? Which model maximizes
+adjusted $R^2$?
+```{r}
+lm1=lm(nox~dis,data=Boston) 
+summary(lm1)
+lm2=lm(nox~dis+I(dis^2),data=Boston) 
+summary(lm2)
+lm3=lm(nox~dis+I(dis^2)+I(dis^3),data=Boston) 
+summary(lm3)
+lm4=lm(nox~dis+I(dis^2)+I(dis^3)+I(dis^4),data=Boston) 
+summary(lm4)
+lm5=lm(nox~dis+I(dis^2)+I(dis^3)+I(dis^4)+I(dis^5),data=Boston) 
+summary(lm5)
+lm6=lm(nox~dis+I(dis^2)+I(dis^3)+I(dis^4)+I(dis^5)+I(dis^6),data=Boston) 
+summary(lm6)
+lm7=lm(nox~dis+I(dis^2)+I(dis^3)+I(dis^4)+I(dis^5)+I(dis^6)+I(dis^7),data=Boston) 
+summary(lm7)
+lm8=lm(nox~dis+I(dis^2)+I(dis^3)+I(dis^4)+I(dis^5)+I(dis^6)+I(dis^7)+I(dis^8),data=Boston) 
+summary(lm8)
+
+summary(lm9)
+summary(lm10)
+
+#since lm 10 have biggest R square and not a good model. lm 8 have biggest R adjust value and is good model 
+```
+
+
+   
+ 

@@ -1,0 +1,339 @@
+---
+title: "STAT 3340 Assignment 1, Fall 2019 - due Thursday, Sept 26, at beginning of class"
+author: "Chaojun Ma"
+date: 'Banner:  B00726514'
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+=================================================================================================================
+
+You should process this Rmd file in R markdown, after adding the appropriate 
+R code or text where appropriate.  You should add your name and banner
+number in the appropriate place above.  Then "Knit" to pdf, Word or html
+to produce your output document.  Most of you will NOT be able to produce
+a pdf document because your computer will not have the requisite software,
+so you should use Word or html output, whichever looks better.  Once you
+are happy with your answers, print a hard copy, which is what is to be
+submitted for grading.
+
+
+1. Find the equation of the line which passes through the points (1,1) and (4,5).
+
+Answer: 
+
+$$y=-\frac{1}{3} + \frac{4}{3} x$$
+
+2. Suppose you are given three data points (1,4), (2,6) and (3,7) and the line $y = 1 + 4x$. 
+Give the three residuals and their sum of squares.
+
+    $r1=4-5=-1$ 
+    
+    $r2=6-9=-3$
+    
+    $r3=7-13=-6$
+    
+    $$\sum_{i=1}^3 r_i^2 =1+9+36=46 $$
+
+3. Some data gives the summaries: $n = 10$, $\sum_{i=1}^{10}  x_iy_i = 100$, $\sum_{i=1}^{10} x_i = 20$ and $\sum_{i=1}^{10} y_i = 10$. 
+   Suppose that the response $y$ is temperature in degrees Celcius. 
+
+    + 3.a) $S_{xy}$=
+```{r}
+#Answer:
+#1
+#2
+#3
+#4
+#5
+#6
+
+
+
+
+```
+    
+    
+    + 3.b) If the response was converted to temperature in degrees Fahrenheit $y'$, so that $y' = 32
++1.8y$, what is $\sum_{i=1}^{10} y'_i$? (this points out how the sum operation
+works when applied to a linear transformation of the original variable)
+
+```{r}
+
+#Answer:
+#1
+#2
+#3
+#4
+#5
+#6
+
+
+
+```
+
+    + 3.c) If the response was converted to temperature in degrees Fahrenheit $y'$, so that $y' = 32+1.8y$, what is $S_{xy'}$? (this illustrates how the
+sum of produces operation works when one of the variables is replaced by
+a linear transformation of the original variable)
+
+```{r}
+
+
+
+
+#Answer:
+#1
+#2
+#3
+#4
+#5
+#6
+
+```
+
+
+4. A random sample of 11 elementary school students is selected,
+  and each student is measured on a creativity score (x) using a
+  well-defined testing instrument and on a task score (y) using a new
+  instrument. The task score is the mean time taken to perform several
+  hand-eye coordination tasks. The data are as follows.
+  
+```{r}
+ x=c(35,37,50,69,84,40,29,42,51,45,31)
+ y=c(3.9,3.9,6.1,4.3,8.8,2.1,5.7,3.0,7.1,7.3,3.3)
+ plot(x,y,xlab="Creativity score",ylab="Task score");
+ 
+```
+ 
+ Use R to do the following questions. You just need to include the appropriate R commands in the markdown document.
+ 
+   + 4a) Calculate the summaries $S_{xy}$, $S_{yy}$ and $\bar{Y}$. R commands to calculate  $S_{xx}$ and $\bar{X}$ have been given in order to show you how to include the R syntax in your markdown document.
+  
+ 
+```{r}
+
+N=length(x)
+xbar=sum(x)/N ;  cat("xbar = ", xbar)
+Sxx=sum((x-xbar)^2) ; cat("Sxx = ",Sxx)
+ybar=sum(y)/N ; cat("ybar = ", ybar);
+Sxy=sum((x-xbar)*(y-ybar)); cat("Sxy = ", Sxy);
+Syy=sum((y-ybar)^2); cat("Syy = ", Syy);
+
+#IN THE SAME WAY, YOU WILL NEED TO DROP THE # IN SEVERAL SUBSEQUENT QUESTIONS
+```
+
+   + 4b) Use these summaries to  calculate the least squares estimates of the  intercept and slope.
+  
+```{r}
+
+ beta1 = Sxy/Sxx ; cat("beta1 =", beta1) ;
+ beta0=ybar- beta1 * xbar ;cat("\nbeta0 =", beta0)  
+
+```
+  
+   + 4c) Calculate the predicted (fitted) values and the residuals.
+   
+```{r}
+fit=beta0+beta1*x;
+resids=y-fit;
+fit;
+resids
+```
+   +  4d) Plot the residuals (y axis) vs fitted values (x axis).
+
+
+```{r}
+plot(fit,resids,xlab = "Fitted values",ylab="Rediduals");
+```
+
+   + 4e) Do the residuals look random? If not, what does the pattern of the residuals suggest?  (NO GRADE FOR THIS QUESTION.  IT'S REALLY HARD TO ASSESS
+   RANDOMNESS VISUALLY WITH ONLY A FEW DATA POINTS)
+   
+   
+   + 4f) Calculate the mean of the residuals
+to verify it is zero, and the correlation of the residuals with $X$ to verify it is also zero.  The R command to calculate
+the correlation between $u$ and $v$ is cor(u,v).  NOTE THAT THESE ARE 0 ONLY
+TO MACHINE PRECISION.  THE COMPUTER DOESN'T DO EXACT ARITHMETIC, SO EVEN THOUGH WE KNOW THAT THESE QUANTITIES ARE 0 IN THEORY, THE CALCULATED VALUES 
+WILL BE VERY CLOSE TO 0, BUT NOT EXACTLY 0.  NOTE, FOR EXAMPLE, THAT
+1.4e-3 means 1.4x10^(-3), or .0014.  THIS IS TYPICALLY HOW MOST COMPUTER
+PROGRAMS REPRESENT SCIENTIFIC NOTATION.
+
+```{r}
+mean(resids);
+cor(resids,x);
+
+```
+
+  + 4g) Calculate and print the error, regression and total sums of squares, using the data summaries.
+
+```{r}
+SST=Syy; SST
+#SSE=      sum of (residuals-mean(residuals))^2
+# NOTE THAT THE MEAN OF THE RESIDUALS IS EQUAL TO 0, SO SSE IS TYPICALLY CALCULATED AS
+SSE=sum(resids^2)；SSE
+SSR=SST - SSE;SSR
+```
+
+
+5. The length of a species of fish is to be represented as a function
+of the age and water temperature.  The fish are kept in tanks
+at 25, 27, 29 and 31 degrees Celsius.  After birth, a test specimen
+is chosen at random every 14 days and its length measured.  The data can be entered into R as
+
+```{r}
+fish=read.csv("http://bsmith.mathstat.dal.ca/stat3340/Data/fish.csv",header=T)
+pairs(fish)
+```
+
+The pairwise plots don't really give an adequate picture of what is going on.
+The following plot of length vs age, with different temperatures identified
+suggests that growth is impeded by high temperatures.
+
+```{r}
+
+  color=rep("black",dim(fish)[1])
+  color=ifelse(fish$temp==27,"blue", color)
+  color=ifelse(fish$temp==29,"green",color)
+  color=ifelse(fish$temp==31,"brown",color)
+  legend.txt=c("25 degrees","27 degrees","29 degrees","31 degrees")
+
+plot(fish$age,fish$length,col=color,ylab="length",xlab="age",cex=2,pch="*")
+legend(100,2000,legend=legend.txt,text.col=c("black","blue","green","brown"))
+
+```
+
+The multiple regression model $length = \beta_0+\beta_1 age +\beta_2 temp +\epsilon$
+was fit using R, as follows.
+
+
+```{r}
+fish.out=lm(length~age+temp, data=fish)
+summary(fish.out)
+anova(fish.out)
+```
+
+  +  Test for the overall significance of the regression.  
+    
+The hypotheses are: $H_0: \beta_1 = \beta_2 = 0$ vs
+$H_A:\mbox{ one or more of } \beta_1, \beta_2 \ne 0$.
+
+  + 5a) The observed value of the $F$ statistic is 84.98
+  
+  + 5b) he numerator degrees of freedom is 2
+  
+  + 5c) The denominator degrees of freedom is 41
+  
+  + 5d) Calculate the  p-value
+```{r}
+ 1-pf(84.98,2,41)  # and include the appropriate Fobs and degrees of freedom.
+```
+
+
+
+  + 5e) Use the lm command to fit a model which includes only the variable age.
+
+```{r}
+ageonly.out = lm (length~age, data=fish) # and include the appropriate model syntax
+summary(ageonly.out);
+```
+
+Test the appropriate hypothesis concerning "temperature".
+
+  + 5f) state the hypotheses:  $H_0:beta 2 = 0 $  vs  $H_A:beta 2 \ne 0$
+    
+  + 5g) Use the ANOVA command to compare the two models (here fish.out and ageonly.out)
+
+```{r}
+anova(fish.out, ageonly.out)
+```
+
+   + 5g(i)The observed value of the test statistic is 6.9202
+   + 5g(ii) The numerator degrees of freedom is 1
+   + 5g(iii)The denominator degrees of freedom is 41
+   + 5g(iv) Calculate the p-value
+    
+```{r}
+1-pf(6.9202,1,41);
+```
+    
+    
+  + 5h) The model 
+     $$length = \beta_0+\beta_1 age +\beta_2 temp + \beta_3 age*temp +\epsilon$$
+    includes the interaction between temperature and age.  The model
+    is fit in R using "lm(length\~age+temp+age:temp)".  An equivalent
+    model statement is "lm(length\~age*temp)".  Fit this model in R,
+    and then use the "anova" command to carry out the F test of significance of the interaction.
+    
+```{r}
+lm.interac=lm(length~age+temp+age:temp, data=fish)
+anova(lm.interac,fish.out)
+```
+  + 5h(i) The null hypothesis is $H_0:\mbox{hypothesis about  a } \beta 3 =0$ parameter 
+  + 5h(ii) The alternative hypothesis is $H_A: \mbox{hypothesis about a } \beta 3 \ne 0$ parameter
+  + 5h(iii) The observed value of F is  3.8858
+  + 5h(iv) The numerator degrees of freedom is 1
+  + 5h(v) The denominator degrees of freedom is 40
+  + 5h(vi) Calculate the p-value.
+
+```{r}
+1-pf(3.8858,1,40);
+# Don't take the p-value from the above output.
+# Rather, include your R Markdown code for the p-value calculation here.
+
+```
+
+6.  You can do this question by hand using basic ideas from linear 
+algebra, or in R, remembering that you
+can calulate the projection of y on x in R as the fitted values of
+the regression of y on x through the origin, using 'fitted(lm(y~x-1))',
+and you can get the residuals from that regression using
+'residuals(lm(y~x-1))'.
+
+   + 6a)  exercise 2.6.8 of Selinger, page 89.
+```{r}
+w=c(1,0,-2);
+v=c(1,2,3);
+fitted(lm(w~v-1));#model pass the origin no intercept 
+
+```
+   
+   + 6b)  exercise 11.3.1 of Selinger, page 412.
+```{r}
+v11=c(1,2,3);
+v12=c(2,6,0);
+u11=v11;
+u12=v12-fitted(lm(v12~u11-1))
+u11;
+u12;
+
+```
+   
+   
+   + 6c)  exercise 11.3.3 of Selinger, page 412.   
+```{r}
+
+v1=c(1,0,1,0);
+v2=c(1,3,1,-1);
+v3=c(2,4,2,2);
+u1=v1;
+u2=v2-fitted(lm(v2~u1-1));
+
+u3=v3-fitted(lm(v3~u1-1))-fitted(lm(v3~u2-1));
+
+u1;
+u2;
+u3;
+
+```
+   
+
+
+
+
+
+
+
+
+
+

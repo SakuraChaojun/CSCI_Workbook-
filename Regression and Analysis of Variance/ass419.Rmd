@@ -1,0 +1,288 @@
+---
+title: "STAT 3340 Assignment 4, Fall 2019 - due Tuesday, Nov 5, at beginning of class"
+author: "Chaojun Ma"
+date: 'Banner:  B00726514'
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+=================================================================================================================
+
+
+
+
+Data were collected to relate the compressive strength of
+concrete ($Y$) to a set of predictors
+\begin{table}[h]
+\center
+\begin{tabular}{ll}
+$X_1$&log(age)\\
+$X_2$&cement\\
+$X_3$&slag\\
+$X_4$&fly.ash\\
+$X_5$&superplasticizer\\
+$X_6$&water\\
+$X_7$&coarse.aggregate\\
+$X_8$&fine.aggregate\\
+\end{tabular}
+\end{table}
+
+\noindent
+The partial regression output below shows the sequential sum of
+squares as terms are added to the model.
+\small
+\begin{verbatim}
+
+> cmt.out1=lm(Y~log(age)+cement+slag+fly.ash+superplasticizer+water+coarse.aggregate+
+    fine.aggregate,data=cmnt)
+
+> anova(cmt.out1)
+Analysis of Variance Table
+
+Response: Y
+                  Df Sum Sq Mean Sq  F value    Pr(>F)    
+log(age)           1 66.202  66.202 150.2657 < 2.2e-16 ***
+cement             1 74.665  74.665 169.4744 < 2.2e-16 ***
+slag               1 24.952  24.952  56.6354 5.652e-12 ***
+fly.ash            1 26.017  26.017  59.0526 2.365e-12 ***
+superplasticizer   1 14.837  14.837  33.6763 4.117e-08 ***
+water              1 11.162  11.162  25.3365 1.445e-06 ***
+coarse.aggregate   1  0.796   0.796   1.8063    0.1811    
+fine.aggregate     1  0.350   0.350   0.7941    0.3744    
+Residuals        141 62.120   0.441                       
+---
+
+\end{verbatim}
+
+Assess whether $coarse.aggregate$ and 
+$fine.aggregate$ are  linearly related to $Compressive~Strength$ once the 
+other variables have been included in the model.
+
+   + 1a) Evaluate the test statistic.
+```{r}
+F=((0.796+0.350)/2)/(62.120/141)
+F
+```
+   
+   + 1b) State the numerator and denominator degrees of freedom, and calculate the p-value 
+using the pf command in R.
+
+```{r}
+pv=1-pf(F,2,141);
+pv
+```
+
+2. The data set ``fish'' has data on fish lengths, age and
+  water temperature.   
+
+The data can be read from the .csv file, for example, as
+
+
+```{r}
+fish=read.csv("http://bsmith.mathstat.dal.ca/stat3340/Data/fish.csv",header=T)
+```
+
+   + 2a)
+Using the {\em lm} command, fit the linear model
+$$
+y = \beta_0+\beta_1 x_1 + \beta_2 x_2 +\epsilon
+$$ 
+where $y$ is length, $x_1$ is $age$, and $x_2$ is $temperature$. 
+
+Print the "summary" output for the model.
+
+```{r}
+lm.out=lm(length~age+temp,data=fish);
+summary(lm.out);
+```
+
+   + 2b) Fit a quadratic model 
+$$
+y = \beta_0+\beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1x_2 + \beta_4 x_1^2 + \beta_5 x_2^2 + \epsilon
+$$ 
+
+In order to enter a quadratic term, say $age^2$ the R syntax is 
+$I(age\wedge2)$.
+
+For example, a model for fish length which includes linear and quadratic
+terms in age would be specified as 
+
+$lm(length \sim age + I(age \wedge 2),data=fish)$
+
+Print the "summary" output for the model.
+
+```{r}
+lm.quad= lm(length~age+temp+age*temp+I(age^2)+I(temp^2),data = fish)
+summary(lm.quad)
+```
+
+   + 2c)  By comparing the error sums of squares in the summary outputs for the two models, test whether
+the squared and product terms can be omitted from the quadratic model.
+
+
+   + 2c(i) State the hypotheses.
+```{r}
+#H0:b3=b4=b5=0;
+#Ha:at least one of them not equal to 0
+```
+   
+   + 2c(ii) What is the observed value of the test statistic?
+   
+```{r}
+anova(lm.out,lm.quad)
+```
+   
+   + 2c(iii) Calculate the p-value using the $pf$ command in R.
+```{r}
+1-pf(74.254,3,38)
+```
+
+3.   In class we talked about how we can consider regression on $ X_1$ and $X_2$ to
+be the result of three regressions. In this question we apply this approach to the $fish$
+data, where we add the $age^2$ term to the model which already has the terms linear in $age$
+and $temperature$.
+
+
+   + 3a)
+   Regress $length$ on $age$ and $temperature$. Include the $summary$ and $anova$ outputs.
+   Store the residuals in $e_1$.
+```{r}
+lm1=lm(length~age+temp,data=fish)
+summary(lm1)
+anova(lm1)
+e1=residuals(lm1)
+```
+   
+   + 3b) Regress $age^2$ on $age$ and $temperature$. Store the residuals in $e_2$
+```{r}
+lm2=lm(I(age^2)~age+temp,data=fish)
+e2=residuals(lm2)
+```
+   
+   + 3c) Regress the residuals $e_1$ on the residuals $e_2$. Do not include an intercept. Use
+the formula $lm(e1 \sim e2-1)$. Print the $anova$ output.
+```{r}
+lm3=lm(e1~e2-1)
+summary(lm3)
+anova(lm3)
+```
+
+   + 3d) Fit the model including $age$, $temperature$ and $age^2$. Show the $summary$ and $anova$
+output.
+```{r}
+lm4=lm(length~age+temp+I(age^2),data=fish)
+summary(lm4);
+anova(lm4)
+```
+
+   + 3e)  Show that the coefficient of $age^2$ is the same as that in the regression of 
+$e_1$ on $e_2$.  Ans:  The coefficient of $age^2$ equals ??? in both cases.
+```{r}
+coef(lm4)
+coef(lm3)
+#answer:according to the data, bothe are -.2564
+```
+
+   + 3f) Use {Step 3} in the notes  to show that the coefficients in the $lm$ fit are the
+same as those reconstructed from the three stage regression process.  (This is what we did in
+class for the tree data.  That is, substitute for $e_1$ and $e_2$ in the equation
+$e_1 = \alpha  e_2$, where $\alpha$ is the coefficient from the 3rd regression.
+Isolate length on the left hand side, and calculate the regression coefficients on the
+right hand side.)
+```{r}
+coef(lm1)+coef(lm3)*(-coef(lm2))
+coef(lm4)
+```
+
+   + 3g) Show that the residual sum of squares from the third regression equals that of the $lm$
+fit to the full model.  Ans:  The regression SS equals ??? in both cases.
+```{r}
+anova(lm3)
+anova(lm4)
+#answer: according to the data both residual sum of squares is 6372687
+```
+
+   + 3h) Show that $SSR(\beta_2| \beta_1)$, sometimes written as $S(\beta_2| \beta_1)$,
+the extra regression sum of squares explained by
+$age^2$ is the same in the third regression as in the $anova$ output for the full model.
+Ans:  the regression sum of squares is same in both cases.
+```{r}
+#according to the above results, tge resgression sum of squares for age square is 8387191 
+```
+
+   + 3i) Do the added variable plot for $length$ versus $age^2$ given that the linear effects of
+$age$ and $temperature$ have been removed from each variable. 
+
+```{r}
+plot(e2,e1,main = "added variable plot for age^2")
+```
+
+  Comment on whether it appears appropriate that a quadratic term in
+  age be included in the model for length.  (Hint: if this is the case,
+  then then this added variable plot should look linear, but not horizontal.)
+```{r}
+#answer: relationship between e1 and e2 looks close to linear 
+```
+
+
+
+
+4.   Data were collected to relate the compressive strength of
+concrete ($Y$) to the following set of predictors: 
+age ($X_1$), cement ($X_2$), and water ($X_3$).  A number of
+regression models were fit, some of which included one or more
+quadratic terms  ($X_1^2$, $X_2^2$, $X_3^2$),  and some of which 
+included interaction terms ($X_1 X_2, X_1 X_3, X_2 X_3$).  
+There were 100 observations in the data set.
+
+  The following table gives the error sums of squares for several
+models which were fit. Each model fit contained an intercept term.
+
+
+\begin{center}
+\begin{tabular}{c c l}
+Model&Variables in model&SSE \\
+1&$X_1$&200\\
+2&$X_1,X_2$&190\\
+3&$X_1,X_2,X_3$&180\\
+4&$X_1,X_2,X_3,X_1^2,X_2^2,X_3^2$&140\\
+5&$X_1,X_2,X_3,X_1 X_2, X_1 X_3, X_2 X_3$&150\\
+6&$X_1,X_2,X_3,X_1 X_2, X_1 X_3, X_2 X_3, X_1^2,X_2^2,X_3^2$&120\\
+\end{tabular}
+\end{center}
+
+For each of the following parts, state the full and reduced models which
+you are comparing (eg Full: model 6, Reduced: model 1),
+give the observed value of the test statistic, and
+the numerator and denominator degrees of freedom of the test statistic.
+If it is not possible to compare the two models using an F test, state
+why not.
+
+
+   + 4a) Test whether all interaction terms and quadratic terms can be removed from model 6.
+```{r}
+#Full model:6
+#reduce model:3
+Fvalue=(((180-120)/6)/(120/(100-10)))
+Fvalue
+1-pf(Fvalue,6,90)
+```
+   
+   + 4b) Compare two quadratic models, one with and one without interaction terms.
+```{r}
+#Full model:6
+#reduce model:4
+Fvalue2=(((140-120)/3)/(120/(100-10)))
+Fvalue2
+1-pf(Fvalue2,3,90)
+```
+   
+   + 4c) Compare models 2 and 5.
+```{r}
+#Full model:5
+#reduce model:2
+Fvalue3=(((190-120)/4)/(120/(100-7)))
+Fvalue3
+1-pf(Fvalue3,4,93)
+```

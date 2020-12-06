@@ -1,0 +1,202 @@
+---
+title: "STAT 3350 Assignment 2, Winter 2020 - due Wednesday, Jan 29, at beginning of class"
+author: "Chaojun Ma"
+date: 'Banner:  B00726514'
+output:
+  pdf_document: default
+  word_document: default
+  html_document: default
+---
+
+1. A computer ANOVA output is shown below. Fill in the missing entries.
+
++ 1a.Fill in the missing entries
+
+````markdown
+One‐way ANOVA
+ 
+Source   DF        SS      MS   F   
+Factor    4    987.71   246.93  33.095   
+Error    25    186.53   7.4612
+Total    29   1174.24 
+
+````
++ 1b.  Calculate the p-value using the pf command in R.
+
+```{r}
+
+MSE = 186.53/25;
+Fvalue = 246.93/MSE;
+pvalue = 1-pf(Fvalue,4,25);#get Factor df 
+
+cat("The P-avlue is:",pvalue);
+
+```
+
+2. The tensile strength of Portland cement is being studied. Four
+different mixing techniques can be used economically. A completely
+randomized experiment was conducted, with four measurements of tensile
+strength made for each of 4 mixing techniques, leading to the
+following data.
+
+````markdown
+Mixing technique     Tensile Strength
+    A                 3129 3000 2865 2890
+    B                 3200 3300 2975 3150
+    C                 2800 2900 2985 3050
+    D                 2600 2700 2600 2765
+````
+
+   + 2a.  Make a boxplot and point plot to examine the distribution of
+   tensile strength for different mixing techniques.  Does it look as if
+   there are differences in the distributions of tensile strength?
+
+```{r}
+#put your R commands here
+
+Rawdata=c(   3129, 3000, 2865, 2890,
+             3200, 3300, 2975, 3150,
+             2800, 2900, 2985, 3050,
+             2600, 2700, 2600, 2765) #y value 
+treatment=c(rep(1,4),rep(2,4),rep(3,4),rep(4,4));#make a matrix 4*4 such like 1 1 1 1
+                                                 #                            2 2 2 2 or you can using c= (1,1,1,1...) 
+                                                 # x value 
+
+boxplot(Rawdata~treatment,xlab = "Mixing Tech", ylab = "Tensile Strength")
+
+plot(treatment,Rawdata,xlab = "Mixing Tech", ylab = "Tensile Strength") # or y~x 
+
+```
+
+```{r}
+cat("According to above figure, we can get following conclusion: The tensile strength is differnted by differnt mixing techniques");
+```
+   
+   + 2b. Use the tapply command to calculate the sample mean tensile strength
+   for each mixing technique.
+
+```{r}
+#put your R commands here
+
+means=tapply(Rawdata, treatment, FUN = mean);
+means
+
+```
+   + 2c. Carry out an analysis of variance using the lm and anova commands
+   in R.  Show the summary output for the lm fit, and the anova output.
+   What is the p-value for the ANOVA?  What is your conclusion when testing
+   at level $\alpha=.05$.
+
+```{r}
+#put your R commands here
+
+tfactor = as.factor(treatment)
+model = lm(Rawdata~tfactor)
+summary(model)
+anova(model)
+
+```
+```{r}
+cat("As above result shows, the p-value is 0.000487. The alpha =.05 and p-value less than alpha. Therefore,reject the null hypothesis, at least one group of mean are not eqaul ")
+```
+
+   + 2d.  Calculate the sums of squares for the following 3 orthonormal
+   contrasts:
+
+```{r}
+C1= c(1,1,-1,-1)/sqrt(4)
+C2= c(1,-1,1,-1)/sqrt(4)
+C3= c(1,-1,-1,1)/sqrt(4)# When there are a treatments, a−1 orthogonal contrasts partition the treatment sum of squares (having                            a−1 degrees of freedom) (refence:STAT 3350)
+
+SS1 = 4*sum(C1*means)^2;SS1# formula n*sum (c*means)^2    >>CH3 
+SS2 = 4*sum(C2*means)^2;SS2
+SS3 = 4*sum(C3*means)^2;SS3
+
+#check SS1+SS2+SS3 = SST factor  directly copy from lecture note ©️STAT 3350
+print(paste("sum of the contrast sum of squares is ",SS1+SS2+SS3))
+```
+
+   + 2e.  Use Tukey's method with $\alpha=.05$ to make confidence intervals
+   for all pairwise differences of population means.
+
+```{r}
+#put your R commands here
+
+MSE = 12826
+critValue=qtukey(1-0.05,4,12);
+
+means[1]-means[2]+c(-1,1)*critValue*sqrt(MSE/4);
+means[1]-means[3]+c(-1,1)*critValue*sqrt(MSE/4);
+means[1]-means[4]+c(-1,1)*critValue*sqrt(MSE/4);#U1 not equal to U4
+
+means[2]-means[3]+c(-1,1)*critValue*sqrt(MSE/4);
+means[2]-means[4]+c(-1,1)*critValue*sqrt(MSE/4);#U2 not equal to U4
+
+means[3]-means[4]+c(-1,1)*critValue*sqrt(MSE/4);#U3 not equal to U4
+
+cat("Above results show U1 not equal to U4, U2 not equal to U4, U3 not equual to U4. It sugguests that mixing techniques D is differ mixing techniques A, B and C.");
+
+
+```
+
+    What are your conclusions in terms of which mixing techniques give
+    different mean tensile strengths.
+
+3.  The response time in milliseconds was determined for three
+different types of circuits that could be used in an automatic valve
+shutoff mechanism. The results from a completely randomized experiment
+are shown in the following table:
+
+````markdown
+Circuit        Response
+ type            time
+I             9 12 10  8 15
+II           20 21 23 17 30
+III           6  5  8 16  7
+````
+
+   Construct a pair of orthogonal, normalized, contrasts assuming
+   that at the outset of  the experiment you suspect that the response
+   time of circuit type 2 is different from the other two circuit types.
+   Construct 95% confidence intervals for the two contrasts.
+
+```{r}
+#enter your R commands here n=5 a=3
+
+y=c(9,12,10,8,15,
+   20,21,23,17,30,
+   6,5,8,16,7);
+
+treatment3=c(rep("A",5),rep("B",5),rep("C",5));
+
+means3=tapply(y, treatment3, FUN = mean);
+means3
+
+tfactor = as.factor(treatment3)
+model = lm(y~tfactor)
+summary(model)
+anova(model)
+
+
+```
+```{r}
+MSE=16.9;
+critValue=qt(0.025,12);
+
+C1 = c(1,-2,1)/sqrt(6);
+C2 = c(1,0,-1)/sqrt(2);
+
+CI1 = (means3[1]-2*means3[2]+means3[3])/sqrt(6)+c(-1,1)*critValue*sqrt(MSE/5);
+CI1
+
+CI2 = (means3[1]-means3[3])/sqrt(2)+c(-1,1)*critValue*sqrt(MSE/5);
+CI2
+
+```
+
+
+```{r}
+samplea <- c(1:50,0)
+```
+
+

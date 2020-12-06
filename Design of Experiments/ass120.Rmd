@@ -1,0 +1,184 @@
+---
+title: "STAT 3350 Assignment 1, Winter 2020 - due Wednesday, Jan 15, at beginning of class"
+author: "Chaojun Ma"
+date: 'Banner:  B00726514'
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+1. A computer program has produced the following output for a hypothesis testing problem:
+
+\begin{verbatim}
+Difference in sample means: 2.35
+Degrees of freedom: 18
+Standard error of the difference in sample means: ?
+Test statistic: t0 = 2.01
+P‐value: 0.0298
+\end{verbatim}
+
+   + 1a. What is the value of $s_p$, the pooled estimate of $\sigma$.
+```{r}
+#do your calculations in R here
+SE=2.35/2.01;
+SP=SE/sqrt(1/5);SP
+cat("The SP value is ",SP)
+```
+
+   + 1b. Is this a two‐sided or a one‐sided test?
+```{r}
+pvalue1b=1-pt(2.01,18);pvalue1b
+cat("The result same as above output, since is one sided test")
+```
+   
+just type in your answer here.
+
+   + 1c. If $\alpha = 0.05$,  what is your conclusion?
+```{r}
+cat("P value is smaller than 0.05, reject null hypothesis at alpha = 0.05")
+```
+   
+ reject the null hypothesis, or do not reject the null hypothesis.
+ 
+   + 1d. Find a 90 percent two‐sided CI on the difference in means.
+```{r}
+#R calculations here
+tobsvalue=abs(qt(0.1/2,18));tobsvalue
+LowerBound=2.35-tobsvalue*SE;
+UpperBound=2.35+tobsvalue*SE;
+cat("Since the lowerbound value is ",LowerBound,"the upperbound value is ",UpperBound)
+```
+
+
+2.15 Consider the computer output shown below.
+
+\begin{verbatim}
+
+Two‐sample T for Y1 vs Y2
+         N     Mean     Std. Dev.    SE Mean
+Y1      20    50.19       1.71          0.38
+Y2      20    52.52       2.48          0.55
+\end{verbatim}
+
+
+When testing for the difference  $\mu_1 - \mu_2$:
+
+\begin{verbatim}
+estimated difference: -2.33341
+95% CI for difference: (-3.69547, -0.97135)
+T‐Test of difference = 0 (vs not =): T‐Value = -3.47
+P‐Value = 0.001 DF = 38
+Both use Pooled Std. Dev. = 2.1277
+\end{verbatim}
+
+   + 2a. Can the null hypothesis be rejected at the 0.05 level? Why?
+```{r}
+cat("P value is 0.001, P value smaller than critical value at 0.05 level, rejceted null hypothesis")
+```
+
+   + 2b. Is this a one‐sided or a two‐sided test?
+```{r}
+pvalue=pt(-3.47,38);pvalue
+pvalue2=2*(1-pt(abs(-3.47),38));pvalue2
+cat("since one-sided value is 0.000655 not equal to above result however two-sided value is 0.001311611 is equal to above")
+cat(". Therfore this is a two-sided test")
+```
+
+   + 2c.  If the hypotheses had been $H_0: \mu_1-\mu_2 = 2$ versus $H_1: \mu_1-\mu_2 \ne 2$,
+would you reject the null hypothesis at the 0.05 level?,
+```{r}
+cat("At 0.05 level of the 95% confidence interval does not contain 2 then reject H0")
+```
+
+   + 2d.  $H_0: \mu_1-\mu_2 = 2$ versus $H_1: \mu_1-\mu_2 < 2$, would you reject the null hypothesis
+   at the 0.05 level? Can you answer this question without doing any additional calculations? Why?
+```{r}
+cat("At 0.05 level of the 95% confidence interval does not contain 2 then reject H0")
+```
+
+   + 2e. Use the output and the R $pt$ command to find a 95 percent upper confidence bound on the difference in means.
+```{r}
+tvalue = qt(0.95,38)
+upperbound = -2.33341+tvalue*2.1277*sqrt(1/10);upperbound
+
+```
+
+As an example, to find the upper 10'th percentile of the $t$ distribution with 12 degrees of freedom, you can
+use the following syntax.
+
+```{r}
+pct=pt(.9,12) 
+pct
+```
+
+   + 2f. What is the P-value if the hypotheses are 
+   
+   $H_0: \mu_1-\mu_2 = 2$ versus $H_1: \mu_1-\mu_2 \ne 2$?
+
+
+```{r}
+TS=  (-2.33341-2)/(2.1277*sqrt(1/10));TS
+pvalue = 2*(1-pt(abs(TS),38))
+pvalue
+cat("The pvalue is ",pvalue)
+```
+
+
+3.  A comparative experiment is to be carried out to compare two populations means with the hypotheses
+$H_0: \mu_1 - \mu_2 = 0$ vs $H_0: \mu_1 - \mu_2 > 0$. Assuming that the common
+standard deviation of the populations is $2$, that testing will be carried out at level $\alpha=.05$, and that
+equal sample sizes will be used, what is the sample size PER GROUP that is required:
+
+   +  eg. to achieve 80% power when $\mu_1-\mu_2 = 2$
+```{r}
+ss=2*(qnorm(1-.05/2)-qnorm(1-.8))^2/((2/2)^2)
+ss
+ceiling(ss) #round ss up to the next integer
+```
+   
+   + 3a.   to achieve 90% power when $\mu_1-\mu_2 = 2$ 
+```{r}
+ssResulta=2*(qnorm(0.05)+qnorm(0.1))^2/(2/2)^2;ssResulta
+cat("The samle size is ",ceiling(ssResulta))
+```
+   
+   
+   + 3b.   to achieve 80% power when: $\mu_1-\mu_2 = 1$
+```{r}
+ssResultb=2*(qnorm(0.05)+qnorm(0.2))^2/(1/2)^2;ssResultb
+cat("The samle size is ",ceiling(ssResultb))
+
+```
+   
+   
+   + 3c.   to achieve 80% power for a 2 sided test with alternative $H_1: \mu_1 - \mu_2 > 0$ at level $\alpha=.05$ when $\mu_1-\mu_2 = 1$
+```{r}
+ssResultc=2*(qnorm(0.05/2)+qnorm(0.2))^2/(1/2)^2;ssResultc
+cat("The samle size is ",ceiling(ssResultc))
+
+```
+   
+   + 3d.   to achieve 80% power when $\mu_1-\mu_2 = 2$ when testing is at level $\alpha=.01$
+```{r}
+ssResultd=2*(qnorm(0.01)+qnorm(0.2))^2/(2/2)^2;ssResultd
+cat("The samle size is ",ceiling(ssResultd))
+
+```
+   
+   + 3e.   to achieve 80% power when $\mu_1-\mu_2 = 2$ when testing is at level $\alpha=.10$.   
+```{r}
+ssResulte=2*(qnorm(0.10)+qnorm(0.2))^2/(2/2)^2;ssResulte
+cat("The samle size is ",ceiling(ssResulte))
+
+```
+   
+
+4.  A comparative experiment is to be carried out to compare two populations means with the hypotheses
+$H_0: \mu_1 - \mu_2 = 0$ vs $H_0: \mu_1 - \mu_2 > 0$. Assuming that the common
+standard deviation of the populations is $2$, that testing will be carried out at level $\alpha=.05$.  What is
+the power to reject the null hypothesis when equal sample sizes of 10 are used in EACH group and $\mu_1-\mu_2 = 1$.
+```{r}
+powerResult4=1-pnorm(qnorm(0.95)-1/2*sqrt(5));powerResult4
+cat("The power to reject null hypothesis is ",powerResult4)
+```

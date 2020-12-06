@@ -1,0 +1,151 @@
+---
+title: "STAT 3350 Assignment 4, Winter 2020 - due Friday, Feb 28, at beginning of class"
+author: "Chaojun Ma"
+date: 'Banner:  B00726514'
+output:
+  pdf_document: default
+  word_document: default
+  html_document: default
+---
+
+
+1. A study used the $^{13}C-UBT$ test on a group of patients infected with
+H. pylori, and on another group who were not infected, with the
+following results, which shows the measurements on the outcome variance $\Delta^{13}CO_2$.
+
+\begin{table}[h]
+\center
+\begin{tabular}{rr}
+\multicolumn{2}{c}{Infected}\\
+Yes&No\\
+\hline
+4.8&2.9\\
+4.3&3.6\\
+3.9&3.8\\
+3.7&\\
+\hline
+\end{tabular}
+\end{table}
+
+Using a permutation test, assess whether there is difference in mean $\Delta^{13}CO_2$ between the two
+groups using a permutation test. Use the hypotheses:
+
+$H_0: \mu_{Yes} = \mu_{No}$ vs 
+$H_1: \mu_{Yes} > \mu_{No}$
+
+(1a) If the difference of sample means $\bar X_{yes} - \bar X_{no}$ is used as the test statistic, what is the observed value of the test statistic? 
+```{r}
+cat("The result value is 0.742");
+```
+
+
+   (1b)  How many assignments of subjects to treatments are there with 4 subjects in the first group and 3 subjects in the second group? 
+
+```{r}
+result1b = choose(7,4);
+cat("Reuslt is",result1b);
+```
+
+
+   (1c) How many assignments of subjects to treatments are there leading to a value for the test statistic which is at least as contrary to the null hypothesis as was the
+original data? 
+
+```{r}
+cat("The answer is two assignment ");
+```
+
+
+   (1d)  What is the p-value? 
+```{r}
+cat("The palue is" , 2/35);
+```
+
+
+2. The following code generates observations from a two factor
+analysis of variance model with two levels of factor A, three
+levels of factor B, and 5 replicates, and plots the sample means of $y$ vs the levels of factor B, with separate plots for the two levels of factor A.
+
+```{r}
+set.seed(42);
+y=c(rnorm(5,5),rnorm(5,10),rnorm(5,10),rnorm(5,10),rnorm(5,5),rnorm(5,5))
+
+A=as.factor(c(rep(1,15),rep(2,15)));
+B=as.factor(c(rep(1,5),rep(2,5),rep(3,5),rep(1,5),rep(2,5),rep(3,5)))
+
+anova(lm(y~A*B))
+
+interaction.plot(B,A,y);
+```
+
+Use the anova and lm commands to carry out a two way analysis of
+variance.  Using level $\alpha=.05$, which of the effects (main effect of A, main effect of B, or interaction) are significant, and
+what are the assoicated p-values? 
+
+```{r}
+lm.out = lm(y~A*B);
+anova(lm.out);
+```
+
+If you did the analysis correctly, you should find that the interaction and the main effect of A are significant, but the main effect of B is not significant, and that the SSE for this two way model
+is 38.195.
+
+The following calculates the sample mean of $y$ for each combination of A and B.
+
+```{r}
+tapply(y,list(A,B),FUN=mean)
+```
+
+Use Tukey's procedure to determine which of the 6 means are
+different.  As 6 means are being compared, you should use the percentile given by qtukey(.95,6,24), as there are 6 means
+being compared, and 24 degrees of freedom associated with the
+MSE. 
+(Hint: Using Tukey's procedure, for any two sample means which differ by
+more than  $qtukey(1-\alpha,a,df) \sqrt{MSE/n}$, the associated population means are declared to be different.  Hence you only
+need to calculate this value, and then look at the differences in
+means in the above table.  You don't need to calculate all of 
+the 6 intervals.)
+
+   (2a) What is the value of $K=qtukey(1-\alpha,a,df) \sqrt{MSE/n}$?
+   
+```{r}
+K=qtukey(0.95,6,24) *sqrt(1.591/30); K
+```
+   
+   (2b) Using this value, which of the 6 population means are determined to be different using Tukey's method.  For example, the population means for (A=1,B=1) and (A=1,B=2) are declared to be different if
+you have calculated the correct value of $K$.  Just list the pairs
+which are declared different.
+
+```{r}
+cat("Following pairs are declared different:
+    A1B1-A1B2;A1B1-A1B3;A1B1-A2B1
+    A1B2-A2B1;A1B2-A2B2;A1B2-A2B3
+    A1B3-A2B1;A1B3-A2B2;A1B3-A2B3
+    A2B1-A2B2;A2B1-A2B3");
+```
+
+The width of the 95% Tukey confidence intervals is $2 qtukey(.95,6,24) \sqrt{MSE/n}$, with the MSE taken from the ANOVA table.
+
+When comparing "6 choose 2"=15 pairs of means, the Bonerroni corrected 95\% $t$ confidence intervals for $\mu_i - \mu_j$
+  are of the form
+
+$$\bar y_{i.} - \bar y_{j.} \pm \sqrt{2} qt(1-.025/15,df) \sqrt{MSE/n}$$
+where $df$ is the degrees of freedom associated with the MSE in the ANOVA table, and the multiplier $\sqrt{2}$ is needed because the contrast $\mu_i-\mu_j$ is not normalized.  The width of this interval is
+$2 \sqrt{2}  qt(1-.025/15,df) \sqrt{MSE/n}$.
+
+
+  (2c) Which of the intervals (Tukey of Bonerroni corrected $t$) is wider?  (You needn't look at the common factor $\sqrt{MSE/n}$, just the 
+  multipliers $2 qtukey$ and $2 \sqrt{2} qt$.)
+```{r}
+qtukey=qtukey(0.95,6,24);qtukey
+tcrit=sqrt(2)*qt(1-0.025/15,24);tcrit
+
+```
+
+   (2d) Both Tukey and Bonerroni corrected $t$ intervals control the familywise Type I error rate to be at most 5\%.  Which of
+   the intervals do you prefer, and why?
+
+```{r}
+cat("I perfer the Tukey's method, because Turkey's method can modify to exactly idea alpha, moreover, Turkey's method can provide shorter confidence intervals. ")
+
+```
+

@@ -6,5 +6,5 @@
 * Regression and Analysis of Variance (Assignments)
 * Design of Experiments  (Assignments)
 
-##Psychology
+## Psychology
 * Computer Programming for Psychology

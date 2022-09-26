@@ -5,5 +5,10 @@
 @author: chaojunma
 """
 
-name = ['c','h','a','o','j','u','n']
-for i in name: print(i)
+print('C')
+print('H')
+print('A')
+print('O')
+print('J')
+print('U')
+print('N')

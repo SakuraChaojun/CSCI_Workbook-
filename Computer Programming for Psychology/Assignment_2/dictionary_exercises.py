@@ -6,16 +6,13 @@
 """
 
 
-oddlist = [1,3,5,7,9]
+about_me = {'name':'chaojun',
+            'age':25.0,
+            'year of study':2,
+            'food':['sushi','tempura','mapotofu']}
 
-print(oddlist)
+print(about_me)
 
-len(oddlist)
+type(about_me)
 
-type(oddlist)
-
-#Create a list called "intlist"
-
-intlist = list(range(1,100+1))
-
-print(intlist)
+len(about_me)

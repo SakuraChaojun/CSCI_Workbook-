@@ -35,4 +35,16 @@
 
 6. Changing the value of letter1 does not change the value of letterX. Python variable assignments follow a sequential order, and changing variables after the assignment does not affect the assigned variable.
 
+---
 
+#### Boolean exercises
+
+1. 1 and 1.0 are equal because both of them is a numbers. '1' and '1.0' are not equal because they are strings, not exactly the same. 
+
+2. The number 5 and equation (3+2) are equivalent in the Python environment.
+
+3. Write out the statements [boolean](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/Assignment_2/boolean_exercises.py)
+
+---
+
+#### List exercises

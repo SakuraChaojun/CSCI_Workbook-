@@ -21,6 +21,7 @@
 
 4. Yes, Python follows the same precedence rules for its mathematical operators. for example, 1+2+3*5\/3 = 8 
 
+---
 
 #### Variable exercises
 

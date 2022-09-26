@@ -63,6 +63,12 @@
 ---
 #### Dictionary exercises
 
+1. Create a dictionary called ["about_me"](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/Assignment_2/dictionary_exercises.py)
 
+3. 4,Python determines the length of a dictionary according to the number of keys.
+
+---
+
+#### Array exercises
 
 

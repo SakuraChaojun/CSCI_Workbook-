@@ -8,7 +8,7 @@
 
 about_me = {'name':'chaojun',
             'age':25.0,
-            'year of study':2,
+            'year of study':17,
             'food':['sushi','tempura','mapotofu']}
 
 print(about_me)

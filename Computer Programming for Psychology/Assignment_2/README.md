@@ -69,6 +69,10 @@
 
 ---
 
+
 #### Array exercises
 
+1. The Three integers convert to float format in this [array](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/Assignment_2/array_exercises.py). 
 
+2. All elements force convert to string format in this array. Python requires the type in the array must be the same. Otherwise, force converts the data type to the same. 
+---

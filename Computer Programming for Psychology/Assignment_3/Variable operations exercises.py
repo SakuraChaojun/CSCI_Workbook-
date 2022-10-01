@@ -37,4 +37,3 @@ print((sub_code+subnr_str)* 3)
 ### case 4 subsubsub222
 print((sub_code * 3) + (subnr_str * 3))
 
-S

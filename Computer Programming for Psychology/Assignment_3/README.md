@@ -7,3 +7,8 @@
 
 2. Please refer to the code: [Variable operations exercises](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/Assignment_3/Variable%20operations%20exercises.py)
 
+---
+
+#### List operations exercises
+
+

@@ -1,5 +1,5 @@
 ## Computer Science
-* Web Design & Development (Final Project, no frame only CSS and JS)
+* Web Design & Development 
 
 
 ## Statistics

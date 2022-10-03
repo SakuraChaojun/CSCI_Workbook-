@@ -10,5 +10,28 @@
 ---
 
 #### List operations exercises
+1. Please refer to the code: [List operations exercises](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/Assignment_3/List%20operations%20exercises.py)
 
+2.  In the Python list, if we multiply by two, the list length will become longer than before, namely, copy each element from the original list and append it to the original list. In contrast, In NumPy, each element value will be two times itself and not change the array length.
 
+3.  Please refer to the code: [List operations exercises](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/Assignment_3/List%20operations%20exercises.py)
+
+---
+
+#### Zipping exercises
+Please refer to the code:[Zipping exercises](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/Assignment_3/Zipping%20exercises.py)
+
+---
+#### Indexing exercises
+Please refer to the code:[Indexing exercises](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/Assignment_3/Indexing%20exercises.py)
+
+---
+#### Slicing exercises
+
+1.2.3.4 Please refer to the code:[Slicing exercises](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/Assignment_3/Slicing%20exercises.py)
+
+5. Yes, according to the boolean result, the value is equal. 
+
+---
+
+####END

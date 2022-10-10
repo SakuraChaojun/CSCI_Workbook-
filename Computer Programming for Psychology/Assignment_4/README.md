@@ -12,4 +12,8 @@ Please refer to the code:[For loop exercises](https://github.com/SakuraChaojun/s
 
 ---
 
-#### 
+#### While loop exercises
+Please refer to the code:[While loop exercises](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/Assignment_4/While%20loop%20exercises.py)
+
+---
+#### <font color = #FF0000 > END </font>

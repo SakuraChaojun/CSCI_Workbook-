@@ -8,4 +8,8 @@ Please refer to the code: [Conditional exercises](https://github.com/SakuraChaoj
 ---
 
 #### For loop exercises
-Please refer to the code:
+Please refer to the code:[For loop exercises](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/Assignment_4/For%20loop%20exercises.py)
+
+---
+
+#### 

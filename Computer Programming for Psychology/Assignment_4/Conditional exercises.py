@@ -27,7 +27,7 @@ print('---Question2---')
 input_value2 = input('Please enter the number: ')
 
 if(input_value2 == '1' or input_value2 == '2'):
-    print('OK')
+    
     if(input_value2 == '1'):
      print('Correct!')
     if(input_value2 == '2'):

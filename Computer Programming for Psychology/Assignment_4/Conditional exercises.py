@@ -7,7 +7,6 @@ Created on Sun Oct  9 19:44:30 2022
 """
 
 # You want to tell your experiment to record participant responses.
-print('---Question1---')
 
 input_value = input('Please enter the number: ')
 
@@ -27,7 +26,7 @@ print('---Question2---')
 input_value2 = input('Please enter the number: ')
 
 if(input_value2 == '1' or input_value2 == '2'):
-    
+    print('OK')
     if(input_value2 == '1'):
      print('Correct!')
     if(input_value2 == '2'):

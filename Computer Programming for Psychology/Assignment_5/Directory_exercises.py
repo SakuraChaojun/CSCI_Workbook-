@@ -50,3 +50,5 @@ if not os.path.isdir(data_dir):
 #PREPARE CONDITION LISTS
 #=====================
 #-check if files to be used during the experiment (e.g., images) exist
+if not pics == ims_in_dir:
+    print ('The image lists do not match up! Check the files')

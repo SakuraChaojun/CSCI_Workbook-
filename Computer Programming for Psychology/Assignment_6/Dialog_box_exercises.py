@@ -1,8 +1,8 @@
 # Platform pycharm win11
 
+import time
 from psychopy import gui
 from datetime import datetime
-import time
 
 if __name__ == '__main__':
     print('Assignment 6 ----\n')
@@ -14,7 +14,7 @@ if __name__ == '__main__':
 # -create a dialogue box that will collect current participant number, age, gender, handedness
 # Edit the dictionary "exp_info" so you have a variable called "session", with "1" preset as the session number.
 
-exp_info = {'session': 1,  #
+exp_info = {'session': 1,
             'subject_nr': 0,
             'age': 0,
             'handedness': ('right', 'left', 'ambi'),
@@ -31,14 +31,15 @@ time.sleep(3)  # wait for 3 seconds
 # Set the order of the variables as session, subject_nr, age, gender, handedness.
 
 # TODO: answer the question :
+# If passing the value for the 'session' is fixed, the session field cannot change and keep the number 1 all the time.
 # Set the variable "session" as fixed. What happens?
 
-my_dlg = gui.DlgFromDict(dictionary=exp_info, title ='subject info',
+my_dlg = gui.DlgFromDict(dictionary=exp_info, title='subject info',  # fixed=['session'],
                          order=['session', 'subject_nr', 'age', 'gender', 'handedness'])
 
 # get date and time
-
-date = datetime.now() #what time is it right now?
+date = datetime.now()
+# what time is it right now?
 print(date)
 
 # -create a unique filename for the data

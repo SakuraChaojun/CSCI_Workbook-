@@ -2,7 +2,7 @@
 ---
 
 #### Wait exercises
----
+
 1.Please refer to the code
 
 ---
@@ -20,7 +20,7 @@
 
 Sample output:
 
-! [output](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/Assignment_7/images/screen_1.png)
+![output](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/Assignment_7/images/screen_1.png)
 
 ---
 

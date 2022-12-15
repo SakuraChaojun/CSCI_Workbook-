@@ -22,15 +22,12 @@ In each trial, the shape, position and number are random, but the size and orien
 </div>
 
 
-` 
-for blocks in range(n_blocks):
-
-    # Each block round appears different conditions
+`   for blocks in range(n_blocks):
+    //Each block round appears different conditions
     if blocks % 2 == 0:
         alltrials = alltrials1  # condition 1
     elif blocks % 2 != 0:
-        alltrials = alltrials2  # condition 2
-`
+        alltrials = alltrials2  # condition 2 `
 
 ---
 

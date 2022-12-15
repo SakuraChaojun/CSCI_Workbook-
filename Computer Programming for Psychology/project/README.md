@@ -42,7 +42,7 @@ The experiment records the participant's response and the corresponding time. Th
 
 ---
 
-#### Data Analysis 
+#### Data Analysis [Data Analysis Code](https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/project/project_505_data_analysis.py)
 
 In order to show the saved data file, the program conducts a brief [exploratory data analysis](https://sakurachaojun.github.io/PSYO3505/data/EDA.html). (Although this part may be beyond the course scope). First, the program converts the format to the millisecond and then plots the histogram to show the data distribution. Next, the program operated the data frame to generate the table showing different conditions' mean reaction time. The results suggest that locating the target-appear shape is fast than the target-disappear shape, even though the sample is small. 
 

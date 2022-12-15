@@ -10,6 +10,18 @@ The main idea of this experiment is to explore the participant's visual search p
    <img src = https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/project/images/condition_2.png style="width:200px"> <img src = https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/project/images/condition_4.png style="width:200px">
 </div>
 
+---
+
+#### Methods
+The experiment only has two blocks for demonstration, and each block has four trials. Participants need to locate the target shape as soon as possible. Press 'Q' means they found the target shape and 'P' for not. The odd number block is the target shape that appears, and the even number block is the target shape that disappears. 
+
+---
+
+<div class='imabox'>
+   <img src = https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/project/images/condition_1_demo.gif style="width:200px"> <img src = https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/project/images/condition_2_demo.gif style="width:200px">
+</div>
+
+---
 
 
 

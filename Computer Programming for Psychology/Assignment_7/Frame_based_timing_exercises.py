@@ -109,7 +109,8 @@ stimulus_properties = []
 # =====================
 # -define the monitor settings using psychopy functions
 mon = monitors.Monitor('my_monitor', width=21, distance=35)
-this_size = mon.getSizePix()
+this_size = (1920,1080)
+
 this_width = this_size[0]
 this_height = this_size[1]
 

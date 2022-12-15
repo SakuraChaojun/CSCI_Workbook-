@@ -21,14 +21,14 @@ In each trial, the shape, position and number are random, but the size and orien
    <img src = https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/project/images/condition_1_demo.gif style="width:300px"> <img src = https://github.com/SakuraChaojun/selected-courses/blob/main/Computer%20Programming%20for%20Psychology/project/images/condition_2_demo.gif style="width:300px">
 </div>
 
-<code>
+```
 for blocks in range(n_blocks):
     //Each block round appears different conditions
     if blocks % 2 == 0:
         alltrials = alltrials1  # condition 1
     elif blocks % 2 != 0:
         alltrials = alltrials2  # condition 2 `
-</code>
+```
 
 ---
 

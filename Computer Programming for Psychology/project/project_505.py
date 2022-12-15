@@ -1,8 +1,17 @@
 # Platform pycharm win 11
 # Prepare for Project 505
 
-"""
-introductory comments:
+"""introductory comments:
+Name of the file: project_505.py, project_505_data_analysis.py
+Name: Chaojun M.
+
+Explanation of what your experiment does:
+This experiment tests the participant's visual search task performance. There are two
+conditions: one needs the participant to find the triangle with the line in the several triangle shapes. Another
+condition requires the participant to find the triangle without the line in the several triangle shapes.
+
+Explanation of why your experiment: We want to know how fast the participant can locate the unique shape (i.e. unique
+triangle) in the 'normal' triangle background.
 
 """
 
